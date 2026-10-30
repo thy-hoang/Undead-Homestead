@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Leather
   icon: {fileID: -712631045867808456, guid: f176df21f280edd42800eb5c7741d1f0, type: 3}
   description: test
-  quantity: 0
+  quantity: 1
   row: 0
