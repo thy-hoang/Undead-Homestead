@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private Transform attackPoint;
-    [SerializeField] private float attackRadius = 0.7f;
+    [SerializeField] private float attackRadius = 1.5f;
     [SerializeField] private int attackDamage = 25;
     [SerializeField] private float attackCooldown = 0.4f;
     [SerializeField] private LayerMask enemyLayer;
@@ -21,33 +21,28 @@ public class PlayerAttack : MonoBehaviour
     }
 
     private void Attack()
-        {
-    Debug.Log("Player attacked!");
-
-    Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
-        attackPoint.position,
-        attackRadius,
-        enemyLayer
-    );
-
-    foreach (Collider2D enemy in enemiesHit)
     {
-        Debug.Log("Hit: " + enemy.name);
+        Debug.Log("Player attacked!");
 
-        ZombieHealth health = enemy.GetComponent<ZombieHealth>();
+        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
+            attackPoint.position,
+            attackRadius,
+            enemyLayer
+        );
 
-        if (health != null)
+        foreach (Collider2D enemy in enemiesHit)
         {
-            health.TakeDamage(attackDamage);
+            ZombieHealth health = enemy.GetComponent<ZombieHealth>();
+
+            if (health != null)
+            {
+                health.TakeDamage(attackDamage, transform.position);
+            }
         }
-    }
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (attackPoint == null)
-            return;
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }

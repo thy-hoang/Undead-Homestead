@@ -350,11 +350,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &923742817 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 677961138609712815, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
-  m_PrefabInstance: {fileID: 6167060791740349244}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &988926544
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +501,7 @@ GameObject:
   - component: {fileID: 1235287806}
   - component: {fileID: 1235287805}
   - component: {fileID: 1235287808}
+  - component: {fileID: 1235287809}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -631,6 +627,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1235287809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235287804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a66c893e3ca8649a093a67311b4922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  target: {fileID: 1569083809}
+  smoothSpeed: 10
 --- !u!1 &1399513321
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +654,8 @@ GameObject:
   - component: {fileID: 1399513324}
   - component: {fileID: 1399513323}
   - component: {fileID: 1399513322}
+  - component: {fileID: 1399513327}
+  - component: {fileID: 1399513328}
   m_Layer: 6
   m_Name: Zombie
   m_TagString: Untagged
@@ -664,6 +676,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieHealth
   maxHealth: 100
+  currentHealth: 0
+  knockbackDistance: 1
 --- !u!50 &1399513323
 Rigidbody2D:
   serializedVersion: 5
@@ -812,30 +826,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1569083796 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
-  m_PrefabInstance: {fileID: 6167060791740349244}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1569083803
+--- !u!114 &1399513327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569083796}
+  m_GameObject: {fileID: 1399513321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d31d721aa78d9d4c9a31f27ced46d56, type: 3}
+  m_Script: {fileID: 11500000, guid: 89f9cbfc17feef84a84f28ff3684739f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  attackPoint: {fileID: 923742817}
-  attackRadius: 0.7
-  attackDamage: 25
-  attackCooldown: 0.4
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieFollow
+  target: {fileID: 1569083809}
+  moveSpeed: 1.5
+  stoppingDistance: 1
+--- !u!114 &1399513328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399513321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15368252b360f62468094126d81e8208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieAttack
+  target: {fileID: 0}
+  attackRange: 1.2
+  attackDamage: 10
+  attackCooldown: 1.5
+--- !u!4 &1569083809 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+  m_PrefabInstance: {fileID: 6167060791740349244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1592943677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,26 +1148,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 677961138609712815, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 677961138609712815, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 677961138609712815, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 677961138609712815, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1902150807103782779, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1189,10 +1195,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1569083803}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
