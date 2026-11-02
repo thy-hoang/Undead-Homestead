@@ -3,11 +3,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private Sprite upSprite;
+    [SerializeField] private Sprite downSprite;
+    [SerializeField] private Sprite sideSprite;
     [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackDistance = 0.7f;
+    [SerializeField] private float moveSpeed = 4f;
 
-    private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private Vector2 lastFacingDirection = Vector2.down;
+    private Rigidbody2D rb;
     private Vector2 movementInput;
 
     private void Awake()
@@ -23,34 +28,39 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (movementInput.x > 0)
+        if (movementInput == Vector2.zero)
+            return;
+
+        if (Mathf.Abs(movementInput.y) > Mathf.Abs(movementInput.x))
         {
-            spriteRenderer.flipX = false;
+            if (movementInput.y > 0)
+            {
+                spriteRenderer.sprite = upSprite;
+                lastFacingDirection = Vector2.up;
+            }
+            else
+            {
+                spriteRenderer.sprite = downSprite;
+                lastFacingDirection = Vector2.down;
+            }
         }
-        else if (movementInput.x < 0)
+        else
         {
-            spriteRenderer.flipX = true;
+            spriteRenderer.sprite = sideSprite;
+
+            if (movementInput.x > 0)
+            {
+                spriteRenderer.flipX = false;
+                lastFacingDirection = Vector2.right;
+            }
+            else
+            {
+                spriteRenderer.flipX = true;
+                lastFacingDirection = Vector2.left;
+            }
         }
 
-
-        if (movementInput.x > 0)
-        {
-            spriteRenderer.flipX = false;
-            attackPoint.localPosition = new Vector3(
-                Mathf.Abs(attackPoint.localPosition.x),
-                attackPoint.localPosition.y,
-                attackPoint.localPosition.z
-            );
-        }
-        else if (movementInput.x < 0)
-        {
-            spriteRenderer.flipX = true;
-            attackPoint.localPosition = new Vector3(
-                -Mathf.Abs(attackPoint.localPosition.x),
-                attackPoint.localPosition.y,
-                attackPoint.localPosition.z
-            );
-        }
+        attackPoint.localPosition = lastFacingDirection * attackDistance;
     }
 
     private void FixedUpdate()

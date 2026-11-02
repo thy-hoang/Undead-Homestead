@@ -1152,6 +1152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5233469451217212032, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: m_FlipY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1192,6 +1196,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8788698434749842225, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: upSprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+    - target: {fileID: 8788698434749842225, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: downSprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+    - target: {fileID: 8788698434749842225, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: sideSprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
