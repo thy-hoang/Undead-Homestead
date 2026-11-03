@@ -21,17 +21,6 @@ public class HotbarManager : MonoBehaviour
             hotbarItems.Add(null);
         }
 
-        //wait a few seconds and then add a test item to the first slot
-        Invoke("AddTestItem", 2f);
-    }
-
-    void AddTestItem()
-    {
-        //test item is an object called French Fries in the Resources folder
-        // The full path is Assets/Inventory/Consumables/French Fries/French Fries.asset
-        HotbarItem testItem = Resources.Load<HotbarItem>("InventoryItems/HotbarItems/French Fries");
-
-        setHotbarItem(0, testItem);
     }
 
     void setHotbarItem(int slotIndex, HotbarItem item)
@@ -87,7 +76,6 @@ public class HotbarManager : MonoBehaviour
 
         var item = hotbarItems[slotIndex];
         
-        // each child of the hotbar has a child with a raw image component, if there is no item then set the image to none and opacity of color to 0, if there is an item then set the image to the item's icon and opacity of color to 1
         var slotUI = childList[slotIndex].transform.GetChild(0).GetComponent<UnityEngine.UI.RawImage>();
         if (item == null)
         {

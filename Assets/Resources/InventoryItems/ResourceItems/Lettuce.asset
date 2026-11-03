@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Lettuce
   m_EditorClassIdentifier: Assembly-CSharp::ResourceItem
   itemName: Lettuce
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3f248a60fdf0e3d45bdc9073f53cc632, type: 3}
   description: 
   quantity: 0
   row: 5
+  column: 1

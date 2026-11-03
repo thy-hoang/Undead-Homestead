@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Iron
   m_EditorClassIdentifier: Assembly-CSharp::ResourceItem
   itemName: Iron
-  icon: {fileID: 3618184629110842299, guid: 0ed376a6c0085614b8c02568cd79dac0, type: 3}
+  icon: {fileID: 21300000, guid: 0e2c654c740856c46b7b459e94fd2db5, type: 3}
   description: 
   quantity: 2
   row: 0
+  column: 0

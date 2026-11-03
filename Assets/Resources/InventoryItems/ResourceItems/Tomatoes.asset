@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Tomatoes
   m_EditorClassIdentifier: Assembly-CSharp::ResourceItem
   itemName: Tomatoes
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7564e30e4b37f8f42845ab8b75d048e6, type: 3}
   description: 
   quantity: 0
   row: 3
+  column: 1

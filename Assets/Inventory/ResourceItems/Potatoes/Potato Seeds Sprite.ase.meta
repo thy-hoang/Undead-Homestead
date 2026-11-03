@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bb6a8b147f266ae4f9bf6e4014d92d48
+guid: 41d179dd7a6c01a44bd1bd0452c105dd
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -125,9 +125,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: IronBar
+  - name: Potato Seeds Sprite
     originalName: 
-    pivot: {x: 0.4827586, y: -0.20833334}
+    pivot: {x: 0.53846157, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -135,9 +135,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 29
-      height: 24
-    spriteID: df1b237d8e1f6c643850067d4ca220be
+      width: 13
+      height: 16
+    spriteID: 66f57c91d692af34cb5fb2aff562ab9c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -151,25 +151,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3590836779
+      value0: 2067407724
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: IronBar
+    name: Potato Seeds Sprite
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: IronBar
+    - name: Potato Seeds Sprite
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 5
-        width: 29
-        height: 24
-      spriteId: df1b237d8e1f6c643850067d4ca220be
+        x: 1
+        y: 0
+        width: 13
+        height: 16
+      spriteId: 66f57c91d692af34cb5fb2aff562ab9c
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -178,5 +178,5 @@ ScriptedImporter:
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
-  previousTextureSize: {x: 64, y: 32}
-  canvasSize: {x: 32, y: 32}
+  previousTextureSize: {x: 32, y: 32}
+  canvasSize: {x: 16, y: 16}

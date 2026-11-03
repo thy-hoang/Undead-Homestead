@@ -127,7 +127,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Carrot Seeds Sprite
     originalName: 
-    pivot: {x: 0.5, y: -0.13725491}
+    pivot: {x: 0.53846157, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -135,8 +135,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 42
-      height: 51
+      width: 13
+      height: 16
     spriteID: 1c52647cd6eac9646b76a15e7b1847b6
     spriteBone: []
     spriteOutline: []
@@ -165,10 +165,10 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 11
-        y: 7
-        width: 42
-        height: 51
+        x: 1
+        y: 0
+        width: 13
+        height: 16
       spriteId: 1c52647cd6eac9646b76a15e7b1847b6
     linkedCells: []
     tileCells: []
@@ -178,5 +178,5 @@ ScriptedImporter:
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
-  previousTextureSize: {x: 64, y: 64}
-  canvasSize: {x: 64, y: 64}
+  previousTextureSize: {x: 32, y: 32}
+  canvasSize: {x: 16, y: 16}

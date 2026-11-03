@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Wood
   m_EditorClassIdentifier: Assembly-CSharp::ResourceItem
   itemName: Wood
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 6ea90167c35e3b0409138ca6e2703d3b, type: 3}
   description: 
   quantity: 0
   row: 0
+  column: 2

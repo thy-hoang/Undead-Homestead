@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2d7f66e26d152a44f89bb954676d0bbf
+guid: 0587370eaceec6943a2a21adfa88a8bd
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -125,9 +125,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Beet Seeds Sprite
+  - name: Iron Sprite
     originalName: 
-    pivot: {x: 0.49056605, y: -0.16666667}
+    pivot: {x: 0.5, y: -0.16666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -135,9 +135,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 53
-      height: 48
-    spriteID: a2e960aae9253a34ebeee667347c5b54
+      width: 16
+      height: 12
+    spriteID: a6cf7d2bead69484fadb00b33aa1969a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -151,25 +151,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3165243475
+      value0: 3965092379
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Beet Seeds Sprite
+    name: Iron Sprite
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Beet Seeds Sprite
+    - name: Iron Sprite
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 6
-        y: 8
-        width: 53
-        height: 48
-      spriteId: a2e960aae9253a34ebeee667347c5b54
+        x: 0
+        y: 2
+        width: 16
+        height: 12
+      spriteId: a6cf7d2bead69484fadb00b33aa1969a
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -178,5 +178,5 @@ ScriptedImporter:
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
-  previousTextureSize: {x: 64, y: 64}
-  canvasSize: {x: 64, y: 64}
+  previousTextureSize: {x: 32, y: 32}
+  canvasSize: {x: 16, y: 16}

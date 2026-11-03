@@ -23,6 +23,7 @@ public class ResourceDisplay : MonoBehaviour
         if (items.Count == 0)
             return;
 
+        int maxColumn = items.Max(item => item.column);
         int maxRow = items.Max(item => item.row);
         int maxItemsInRow = items
             .GroupBy(item => item.row)
@@ -32,7 +33,7 @@ public class ResourceDisplay : MonoBehaviour
         RectTransform displayRect = GetComponent<RectTransform>();
 
         displayRect.sizeDelta = new Vector2(
-            maxItemsInRow * ENTRY_WIDTH,
+            (maxColumn + 1) * ENTRY_WIDTH,
             (maxRow + 1) * ENTRY_HEIGHT + maxRow * ROW_SPACING
         );
 
@@ -55,7 +56,7 @@ public class ResourceDisplay : MonoBehaviour
             int index = rowItems.IndexOf(item);
 
             entryRect.anchoredPosition = new Vector2(
-                -index * ENTRY_WIDTH,
+                -item.column * ENTRY_WIDTH,
                 -item.row * (ENTRY_HEIGHT + ROW_SPACING)
             );
 
