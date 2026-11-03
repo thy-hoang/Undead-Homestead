@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31dfef8dd3bb8d248af2f31b1089675f, type: 3}
-  m_Name: Beet Seeds
+  m_Name: Lettuce Seeds
   m_EditorClassIdentifier: Assembly-CSharp::ResourceItem
-  itemName: Beet Seeds
-  icon: {fileID: 21300000, guid: ebffcef13efd2b04f837d100f6b5c568, type: 3}
+  itemName: Lettuce Seeds
+  icon: {fileID: 0}
   description: 
   quantity: 0
-  row: 1
+  row: 5
