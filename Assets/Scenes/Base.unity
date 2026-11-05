@@ -3411,6 +3411,22 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5233469451217212032, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233469451217212032, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: m_Size.x
+      value: 2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233469451217212032, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: m_Size.y
+      value: 1.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233469451217212032, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
+    - target: {fileID: 5233469451217212032, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
@@ -3454,6 +3470,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8638894506387223974, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638894506387223974, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638894506387223974, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638894506387223974, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8788698434749842225, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: upSprite
+      value: 
+      objectReference: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
+    - target: {fileID: 8788698434749842225, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: downSprite
+      value: 
+      objectReference: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
+    - target: {fileID: 8788698434749842225, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: sideSprite
+      value: 
+      objectReference: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
