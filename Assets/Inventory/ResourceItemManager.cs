@@ -10,13 +10,6 @@ public class ResourceItemManager : MonoBehaviour
         ResourceItem[] loadedItems = Resources.LoadAll<ResourceItem>("");
 
         resourceItems.AddRange(loadedItems);
-
-        Debug.Log($"Loaded {resourceItems.Count} resource items.");
-        Debug.Log("Resource Items:");
-        foreach (var item in resourceItems)
-        {
-            Debug.Log($"- {item.itemName} (Quantity: {item.quantity}, Row: {item.row})");
-        }
     }
 
     ResourceItem GetResourceItemByName(string itemName)
