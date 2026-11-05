@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e803ed6183e9f4f930b28da900791e, type: 3}
   m_Name: Popcorn
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItem
-  itemName: 
-  icon: {fileID: 0}
+  itemName: Popcorn of the Apocalypse
+  icon: {fileID: 21300000, guid: 363c561916074e94a8b2b5e7b5a12f18, type: 3}
   description: 
-  slotIndex: 0
-  healthRestored: 0
+  recipe:
+  - item: {fileID: 11400000, guid: 95555a3cb0b6d474ea9b27be97749edc, type: 2}
+    quantity: 1
+  healthRestored: 5
