@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class CookingPanel : MonoBehaviour
 {
@@ -52,7 +53,6 @@ public class CookingPanel : MonoBehaviour
             }
 
             // set the button's image to the item's icon
-            // this is a raw image not image, so we need to get the raw image component and set the texture to the item's icon
             UnityEngine.UI.RawImage buttonImage = buttonInstance.transform.Find("FoodSection/FoodIcon")?.GetComponent< UnityEngine.UI.RawImage>();
             if (buttonImage != null)
             {
@@ -81,11 +81,26 @@ public class CookingPanel : MonoBehaviour
                 Debug.LogError($"CookingPanel: No RecipeButton component found in {buttonInstance.name}");
             }
         }
+
+        // connect the close button to the onCloseButtonClick method
+        Button closeButton = transform.Find("CloseButton")?.GetComponent<Button>();
+        if (closeButton != null)
+        {
+            closeButton.onClick.AddListener(onCloseButtonClick);
+        }
+        else
+        {
+            Debug.LogError($"CookingPanel: No CloseButton component found in {gameObject.name}");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    void onCloseButtonClick()
+    {
+        gameObject.SetActive(false);
     }
 }

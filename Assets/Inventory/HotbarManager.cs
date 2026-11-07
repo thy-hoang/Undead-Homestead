@@ -17,8 +17,6 @@ public class HotbarManager : MonoBehaviour
             childList.Add(child.gameObject);
         }
 
-        Debug.Log($"HotbarManager: Found {childList.Count} child objects.");
-
         for (int i = 0; i < childList.Count; i++)
         {
             hotbarItems.Add(null);
