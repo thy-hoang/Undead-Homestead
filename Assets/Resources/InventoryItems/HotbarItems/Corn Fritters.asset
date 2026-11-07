@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e803ed6183e9f4f930b28da900791e, type: 3}
   m_Name: Corn Fritters
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItem
-  itemName: 
+  itemName: Corn Fritters
   icon: {fileID: 0}
   description: 
-  slotIndex: 0
-  healthRestored: 0
+  recipe:
+  - item: {fileID: 11400000, guid: 95555a3cb0b6d474ea9b27be97749edc, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: 27823fa4bd78a8d43b203c87cc16d161, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: 400e2acb960145042ad5066b41841062, type: 2}
+    quantity: 1
+  healthRestored: 25
