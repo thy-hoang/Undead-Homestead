@@ -125,4 +125,18 @@ public class HotbarManager : MonoBehaviour
         Debug.Log($"HotbarManager: Selected slot {slotIndex}");
 
     }
+
+    public void addItemInNextAvailableSlot(HotbarItem item)
+    {
+        for (int i = 0; i < hotbarItems.Count; i++)
+        {
+            if (hotbarItems[i] == null)
+            {
+                setHotbarItem(i, item);
+                return;
+            }
+        }
+
+        Debug.LogWarning("HotbarManager: No available slot to add the item.");
+    }
 }

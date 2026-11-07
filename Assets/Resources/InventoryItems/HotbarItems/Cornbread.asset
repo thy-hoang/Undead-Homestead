@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e803ed6183e9f4f930b28da900791e, type: 3}
   m_Name: Cornbread
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItem
-  itemName: Cornbread
-  icon: {fileID: 0}
+  itemName: Corn to Be Wild
+  icon: {fileID: 21300000, guid: 1313e3bf39e92cc45b4b47f02bb6562d, type: 3}
   description: 
   recipe:
   - item: {fileID: 11400000, guid: 95555a3cb0b6d474ea9b27be97749edc, type: 2}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e803ed6183e9f4f930b28da900791e, type: 3}
   m_Name: Baked Potato
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItem
-  itemName: Baked Potato
-  icon: {fileID: 0}
+  itemName: The Spud of Destiny
+  icon: {fileID: 21300000, guid: 3d885b68eb860314d86368b3f92a1780, type: 3}
   description: 
   recipe:
   - item: {fileID: 11400000, guid: 41baff29e37124047a07c7af1e4cf54e, type: 2}

@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e803ed6183e9f4f930b28da900791e, type: 3}
   m_Name: Vegetable Stew
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItem
-  itemName: Vegetable Stew
+  itemName: Garden of Eat'n
   icon: {fileID: 0}
   description: 
   recipe:
-  - item: {fileID: 11400000, guid: 400e2acb960145042ad5066b41841062, type: 2}
-    quantity: 1
   - item: {fileID: 11400000, guid: 41baff29e37124047a07c7af1e4cf54e, type: 2}
     quantity: 1
-  - item: {fileID: 11400000, guid: 2d04d22fc4c1a6a47bb3924d4519ba1a, type: 2}
+  - item: {fileID: 11400000, guid: 400e2acb960145042ad5066b41841062, type: 2}
     quantity: 1
   healthRestored: 25

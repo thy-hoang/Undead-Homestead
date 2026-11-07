@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RecipeButton : MonoBehaviour
 {
@@ -7,12 +8,20 @@ public class RecipeButton : MonoBehaviour
 
     [SerializeField] private GameObject ingredientPrefab; // prefab for the ingredient UI element
 
-    
+    private Button myButton;
+
+    private ResourceItemManager resourceItemManager;
+
+    private HotbarManager hotbarManager;
 
     // Start is called before the first frame update
     void Start()
     {
         Transform ingredientsContainerTransform = transform.Find("IngredientsSection/IngredientsContainer");
+
+        resourceItemManager = FindObjectOfType<ResourceItemManager>();
+
+        hotbarManager = FindObjectOfType<HotbarManager>();
 
         // Get all of the ingredients for this recipe and print them to the console
         foreach (RecipeIngredient ingredient in consumableItem.recipe)
@@ -21,12 +30,10 @@ public class RecipeButton : MonoBehaviour
             GameObject ingredientInstance = Instantiate(ingredientPrefab, ingredientsContainerTransform);
 
             // set the icon of the ingredient to the icon of the resource item that matches the ingredient's name
-            ResourceItem resourceItem = FindObjectOfType<ResourceItemManager>().GetResourceItemByName(ingredient.item.itemName);
+            ResourceItem resourceItem = resourceItemManager.GetResourceItemByName(ingredient.item.itemName);
             if (resourceItem != null)
             {
                 UnityEngine.UI.RawImage ingredientIcon = ingredientInstance.transform.Find("IngredientIcon")?.GetComponent<UnityEngine.UI.RawImage>();
-                Debug.Log($"RecipeButton: Found RawImage component in {ingredientInstance.name}: {ingredientIcon != null}");
-                Debug.Log($"RecipeButton: Found ResourceItem for {ingredient.item.itemName}: {resourceItem != null}");
                 if (ingredientIcon != null)
                 {
                     ingredientIcon.texture = resourceItem.icon.texture;
@@ -66,11 +73,63 @@ public class RecipeButton : MonoBehaviour
                 }
             }
         }
+
+        myButton = GetComponent<Button>();
+        if (myButton != null)
+        {
+            myButton.onClick.AddListener(OnButtonClick);
+        }
+        else
+        {
+            Debug.LogError($"RecipeButton: No Button component found in {gameObject.name}");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    void OnButtonClick()
+    {
+        // method called to handle cooking the item when the button is clicked
+        
+        // check if the player has all of the ingredients for the recipe
+        bool hasAllIngredients = true;
+        foreach (RecipeIngredient ingredient in consumableItem.recipe)
+        {
+            if (resourceItemManager.GetResourceItemByName(ingredient.item.itemName).quantity < ingredient.quantity)
+            {
+                hasAllIngredients = false;
+                break;
+            }
+        }
+
+        // remove the ingredients from the player's inventory if they have all of the ingredients
+        if (hasAllIngredients)
+        {
+            foreach (RecipeIngredient ingredient in consumableItem.recipe)
+            {
+                ResourceItem resourceItem = resourceItemManager.GetResourceItemByName(ingredient.item.itemName);
+                if (resourceItem != null)
+                {
+                    resourceItem.quantity -= ingredient.quantity;
+                }
+                else
+                {
+                    Debug.LogError($"RecipeButton: No ResourceItem found with name {ingredient.item.itemName}");
+                }
+            }
+
+            resourceItemManager.doUpdateDisplay = true;
+
+            // add the cooked item to the player's inventory
+            hotbarManager.addItemInNextAvailableSlot(consumableItem);
+        }
+        else
+        {
+            Debug.Log("You do not have all of the ingredients for this recipe.");
+        }
     }
 }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e803ed6183e9f4f930b28da900791e, type: 3}
   m_Name: Carrot Cake
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItem
-  itemName: Carrot Cake
-  icon: {fileID: 0}
+  itemName: Carrot Top Cake
+  icon: {fileID: 21300000, guid: 86e004445d4575d418057b19d81dbd7e, type: 3}
   description: 
   recipe:
   - item: {fileID: 11400000, guid: 400e2acb960145042ad5066b41841062, type: 2}

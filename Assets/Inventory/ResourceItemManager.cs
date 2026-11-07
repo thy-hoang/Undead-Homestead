@@ -5,6 +5,8 @@ public class ResourceItemManager : MonoBehaviour
 {
     public List<ResourceItem> resourceItems = new List<ResourceItem>();
 
+    public bool doUpdateDisplay = false;
+
     void Awake()
     {
         ResourceItem[] loadedItems = Resources.LoadAll<ResourceItem>("");
