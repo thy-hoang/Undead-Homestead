@@ -555,7 +555,7 @@ MonoBehaviour:
   timeMultiplier: 1
   nightOverlay: {fileID: 0}
   timeText: {fileID: 1866704429}
-  dayText: {fileID: 0}
+  dayText: {fileID: 44478992}
 --- !u!4 &742080907
 Transform:
   m_ObjectHideFlags: 0
