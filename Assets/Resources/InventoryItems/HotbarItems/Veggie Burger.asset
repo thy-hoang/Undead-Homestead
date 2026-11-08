@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Veggie Burger
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItem
   itemName: The Walking Bread
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 8348c71197e355f459eebfe05b798945, type: 3}
   description: 
   recipe:
   - item: {fileID: 11400000, guid: 41baff29e37124047a07c7af1e4cf54e, type: 2}

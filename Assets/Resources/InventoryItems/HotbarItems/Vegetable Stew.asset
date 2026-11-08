@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Vegetable Stew
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItem
   itemName: Garden of Eat'n
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2ae813067e374cb4e83fd33d4e1578fc, type: 3}
   description: 
   recipe:
   - item: {fileID: 11400000, guid: 41baff29e37124047a07c7af1e4cf54e, type: 2}
