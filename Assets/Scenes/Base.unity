@@ -4491,6 +4491,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: FarmPlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8382838800985205724, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382838800985205724, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382838800985205724, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e38e4896eb47b5c4e81ca08748bf64cc, type: 3}
+    - target: {fileID: 8382838800985205724, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382838800985205724, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382838800985205724, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382838800985205724, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8551909347705345605, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8551909347705345605, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8551909347705345605, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
