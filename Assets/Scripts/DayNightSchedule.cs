@@ -30,6 +30,9 @@ public class DayNightCycle : MonoBehaviour
     private float timePassed;
     private int currentDay = 1;
 
+    public bool IsNight => currentTime == TimeOfDay.Night;
+    public int CurrentDay => currentDay;
+
     //function: Start
     //purpose: this function sets the starting time, day number, and UI
     private void Start()
