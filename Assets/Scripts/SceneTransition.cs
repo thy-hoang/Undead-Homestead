@@ -6,7 +6,7 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] private string sceneToLoad;
 
     //function: OnTriggerEnter2D
-    //purpose: this function loads the selected scene when the player enters the trigger
+    //purpose: this function loads the selected scene when the player enters the trigger zone
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
