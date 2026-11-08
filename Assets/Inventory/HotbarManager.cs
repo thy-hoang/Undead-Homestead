@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class HotbarManager : MonoBehaviour
 {
@@ -7,14 +8,14 @@ public class HotbarManager : MonoBehaviour
 
     public List<HotbarItem> hotbarItems = new List<HotbarItem>();
 
+    public int selectedSlotIndex = 0;
+
     void Start()
     {
         foreach (Transform child in transform)
         {
             childList.Add(child.gameObject);
         }
-
-        Debug.Log($"HotbarManager: Found {childList.Count} child objects.");
 
         for (int i = 0; i < childList.Count; i++)
         {
@@ -87,5 +88,53 @@ public class HotbarManager : MonoBehaviour
             slotUI.texture = item.icon.texture;
             slotUI.color = new Color(1, 1, 1, 1);
         }
+    }
+
+    void Update()
+    {
+        if (Keyboard.current == null) return;
+
+        for (Key k = Key.Digit1; k <= Key.Digit9; k++)
+        {
+            if (Keyboard.current[k].wasPressedThisFrame)
+            {
+                int slotIndex = k - Key.Digit1;
+                selectSlot(slotIndex);
+                return;
+            }
+        }
+
+        if (Keyboard.current.digit0Key.wasPressedThisFrame)
+        {
+            selectSlot(9);
+        }
+    }
+
+    void selectSlot(int slotIndex)
+    {
+        if (slotIndex < 0 || slotIndex >= childList.Count)
+        {
+            Debug.LogError($"Invalid slot index: {slotIndex}");
+            return;
+        }
+
+        selectedSlotIndex = slotIndex;
+
+        Debug.Log($"HotbarManager: Selected slot {slotIndex}");
+
+    }
+
+    public void addItemInNextAvailableSlot(HotbarItem item)
+    {
+        for (int i = 0; i < hotbarItems.Count; i++)
+        {
+            if (hotbarItems[i] == null)
+            {
+                setHotbarItem(i, item);
+                return;
+            }
+        }
+
+        Debug.LogWarning("HotbarManager: No available slot to add the item.");
     }
 }

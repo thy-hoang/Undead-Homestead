@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 7fe8bd1843f7f6049b8a7afcdb83154f, type: 3}
   description: 
   quantity: 0
-  row: 2
+  row: 1
   column: 0
