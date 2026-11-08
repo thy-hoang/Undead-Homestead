@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5968509786089811907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3696647032894769708}
+  - component: {fileID: 8526455996691012339}
+  m_Layer: 0
+  m_Name: ZombieSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3696647032894769708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5968509786089811907}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.27487, y: -2.58574, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8526455996691012339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5968509786089811907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47ae2a8d1eb0c64c9b69b264bbbb529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieSpawner
+  zombieTypes:
+  - prefab: {fileID: 6384897512951287556, guid: 4b877de001d3ebf4f8a118fa92038dc6, type: 3}
+    startingWeight: 65
+    weightIncreasePerDay: 2
+    minimumDay: 1
+  - prefab: {fileID: 8126080874347956913, guid: 57c2929de30540a42a0cf63da3d95de5, type: 3}
+    startingWeight: 10
+    weightIncreasePerDay: 2
+    minimumDay: 5
+  - prefab: {fileID: 8876308788743340393, guid: dc1e1f0d8960a2642acc4abf12187faf, type: 3}
+    startingWeight: 10
+    weightIncreasePerDay: 2
+    minimumDay: 10
+  - prefab: {fileID: 5460233097925502419, guid: 9d67f45c253fcb3488fd7222bcf91880, type: 3}
+    startingWeight: 10
+    weightIncreasePerDay: 2
+    minimumDay: 15
+  - prefab: {fileID: 6093467511363365888, guid: 819dda059603d1b40a5777501059a96d, type: 3}
+    startingWeight: 1
+    weightIncreasePerDay: 1
+    minimumDay: 1
+  - prefab: {fileID: 5385694810334930659, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
+    startingWeight: 1
+    weightIncreasePerDay: 1
+    minimumDay: 30
+  - prefab: {fileID: 4629788601985443367, guid: 4b985d16e4fe6fe47a24370af075b93a, type: 3}
+    startingWeight: 1
+    weightIncreasePerDay: 1
+    minimumDay: 40
+  - prefab: {fileID: 1198621961944123411, guid: 25ed479143c678946b764c41f9452602, type: 3}
+    startingWeight: 1
+    weightIncreasePerDay: 1
+    minimumDay: 50
+  - prefab: {fileID: 710932488565122836, guid: 1926ebba15365484db993c8f3303240c, type: 3}
+    startingWeight: 1
+    weightIncreasePerDay: 1
+    minimumDay: 60
+  maxZombies: 10
+  dayNightCycle: {fileID: 8260398511881484745, guid: aaeb17204b45c734e9fce49fab8851b5, type: 3}
+  dayZombiesPerMinute: 2
+  nightZombiesPerMinute: 10
+  distanceOutsideCamera: 1
+  spawnCamera: {fileID: 1124170505438642611, guid: 30642eb336e551a45bebd3d6781e22f4, type: 3}

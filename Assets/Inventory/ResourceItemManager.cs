@@ -5,6 +5,8 @@ public class ResourceItemManager : MonoBehaviour
 {
     public List<ResourceItem> resourceItems = new List<ResourceItem>();
 
+    public bool doUpdateDisplay = false;
+
     void Awake()
     {
         ResourceItem[] loadedItems = Resources.LoadAll<ResourceItem>("");
@@ -12,7 +14,7 @@ public class ResourceItemManager : MonoBehaviour
         resourceItems.AddRange(loadedItems);
     }
 
-    ResourceItem GetResourceItemByName(string itemName)
+    public ResourceItem GetResourceItemByName(string itemName)
     {
         return resourceItems.Find(item => item.itemName == itemName);
     }

@@ -48,7 +48,7 @@ public class ResourceDisplay : MonoBehaviour
             entryRect.anchorMax = new Vector2(1, 1);
             entryRect.pivot = new Vector2(1, 1);
 
-            // Count how many items precede this one in its row
+            // count how many items precede this one in its row
             var rowItems = items
                 .Where(x => x.row == item.row)
                 .ToList();
@@ -61,6 +61,25 @@ public class ResourceDisplay : MonoBehaviour
             );
 
             entry.Initialize(item);
+        }
+    }
+
+    public void refreshDisplay()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        GenerateDisplay();
+    }
+
+    void Update()
+    {
+        if (itemManager.doUpdateDisplay)
+        {
+            refreshDisplay();
+            itemManager.doUpdateDisplay = false;
         }
     }
 }
