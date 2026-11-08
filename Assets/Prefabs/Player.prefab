@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 1902150807103782779}
   - component: {fileID: 3224861405372686640}
   - component: {fileID: 4893916264213330680}
-  - component: {fileID: 7246125304840998767}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -120,7 +119,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -196,7 +195,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.31, y: 1.96}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -216,9 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235c0996998495342bf0ff460ea08dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  upSprite: {fileID: 0}
-  downSprite: {fileID: 0}
-  sideSprite: {fileID: 0}
+  upSprite: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
+  downSprite: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
+  sideSprite: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
   attackPoint: {fileID: 677961138609712815}
   attackDistance: 0.7
   moveSpeed: 4
@@ -251,7 +250,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1124170505438642611, guid: 30642eb336e551a45bebd3d6781e22f4, type: 3}
 --- !u!114 &3224861405372686640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,21 +284,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
   currentHealth: 0
---- !u!114 &7246125304840998767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3867200813987780921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 235c0996998495342bf0ff460ea08dfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  upSprite: {fileID: 0}
-  downSprite: {fileID: 0}
-  sideSprite: {fileID: 0}
-  attackPoint: {fileID: 0}
-  attackDistance: 0.7
-  moveSpeed: 4
