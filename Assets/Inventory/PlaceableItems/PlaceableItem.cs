@@ -4,11 +4,13 @@ using UnityEngine;
     fileName = "New Placeable Item",
     menuName = "Inventory/Placeable Item"
 )]
-public class PlaceableItem : Item
+public class PlaceableItem : HotbarItem
 {
     public GameObject prefab;
 
     public Vector2Int gridSize = Vector2Int.one;
 
     public bool canStore = true;
+
+    public float placementRange;
 }

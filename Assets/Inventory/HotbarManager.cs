@@ -1,0 +1,140 @@
+using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.InputSystem;
+
+public class HotbarManager : MonoBehaviour
+{
+    public List<GameObject> childList = new List<GameObject>();
+
+    public List<HotbarItem> hotbarItems = new List<HotbarItem>();
+
+    public int selectedSlotIndex = 0;
+
+    void Start()
+    {
+        foreach (Transform child in transform)
+        {
+            childList.Add(child.gameObject);
+        }
+
+        for (int i = 0; i < childList.Count; i++)
+        {
+            hotbarItems.Add(null);
+        }
+
+    }
+
+    void setHotbarItem(int slotIndex, HotbarItem item)
+    {
+        if (slotIndex < 0 || slotIndex >= childList.Count)
+        {
+            Debug.LogError($"Invalid slot index: {slotIndex}");
+            return;
+        }
+
+        hotbarItems[slotIndex] = item;
+
+        Debug.Log($"HotbarManager: Set item in slot {slotIndex} to {item?.itemName ?? "None"}");
+
+        updateSlotUI(slotIndex);
+    }
+
+    void removeHotbarItem(int slotIndex)
+    {
+        if (slotIndex < 0 || slotIndex >= childList.Count)
+        {
+            Debug.LogError($"Invalid slot index: {slotIndex}");
+            return;
+        }
+
+        hotbarItems[slotIndex] = null;
+
+        Debug.Log($"HotbarManager: Removed item from slot {slotIndex}");
+
+        updateSlotUI(slotIndex);
+    }
+
+    HotbarItem getHotbarItem(int slotIndex)
+    {
+        if (slotIndex < 0 || slotIndex >= hotbarItems.Count)
+        {
+            Debug.LogError($"Invalid slot index: {slotIndex}");
+            return null;
+        }
+
+        var item = hotbarItems[slotIndex];
+        Debug.Log($"HotbarManager: Item in slot {slotIndex} is {item?.itemName ?? "None"}");
+        return item;
+    }
+
+    void updateSlotUI(int slotIndex)
+    {
+        if (slotIndex < 0 || slotIndex >= childList.Count)
+        {
+            Debug.LogError($"Invalid slot index: {slotIndex}");
+            return;
+        }
+
+        var item = hotbarItems[slotIndex];
+        
+        var slotUI = childList[slotIndex].transform.GetChild(0).GetComponent<UnityEngine.UI.RawImage>();
+        if (item == null)
+        {
+            slotUI.texture = null;
+            slotUI.color = new Color(1, 1, 1, 0);
+        }
+        else
+        {
+            slotUI.texture = item.icon.texture;
+            slotUI.color = new Color(1, 1, 1, 1);
+        }
+    }
+
+    void Update()
+    {
+        if (Keyboard.current == null) return;
+
+        for (Key k = Key.Digit1; k <= Key.Digit9; k++)
+        {
+            if (Keyboard.current[k].wasPressedThisFrame)
+            {
+                int slotIndex = k - Key.Digit1;
+                selectSlot(slotIndex);
+                return;
+            }
+        }
+
+        if (Keyboard.current.digit0Key.wasPressedThisFrame)
+        {
+            selectSlot(9);
+        }
+    }
+
+    void selectSlot(int slotIndex)
+    {
+        if (slotIndex < 0 || slotIndex >= childList.Count)
+        {
+            Debug.LogError($"Invalid slot index: {slotIndex}");
+            return;
+        }
+
+        selectedSlotIndex = slotIndex;
+
+        Debug.Log($"HotbarManager: Selected slot {slotIndex}");
+
+    }
+
+    public void addItemInNextAvailableSlot(HotbarItem item)
+    {
+        for (int i = 0; i < hotbarItems.Count; i++)
+        {
+            if (hotbarItems[i] == null)
+            {
+                setHotbarItem(i, item);
+                return;
+            }
+        }
+
+        Debug.LogWarning("HotbarManager: No available slot to add the item.");
+    }
+}
