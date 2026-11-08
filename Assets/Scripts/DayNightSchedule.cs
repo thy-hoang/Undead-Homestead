@@ -24,23 +24,27 @@ public class DayNightCycle : MonoBehaviour
 
     [Header("Clock UI")]
     [SerializeField] private TMP_Text timeText;
+    [SerializeField] private TMP_Text dayText;
 
     private TimeOfDay currentTime = TimeOfDay.Day;
     private float timePassed;
+    private int currentDay = 1;
 
     //function: Start
-    //purpose: this function sets the starting time and updates the game visuals and clock
+    //purpose: this function sets the starting time, day number, and UI
     private void Start()
     {
         currentTime = TimeOfDay.Day;
         timePassed = 0f;
+        currentDay = 1;
 
         UpdateVisuals();
         UpdateTimeText();
+        UpdateDayText();
     }
 
     //function: Update
-    //purpose: this function advances time, switches between day and night, and updates the clock
+    //purpose: this function advances time and updates the clock and day counter
     private void Update()
     {
         timePassed += Time.deltaTime;
@@ -51,10 +55,11 @@ public class DayNightCycle : MonoBehaviour
         }
 
         UpdateTimeText();
+        UpdateDayText();
     }
 
     //function: GetCurrentPhaseLengthSeconds
-    //purpose: this function returns the current day or night length in seconds after applying the time multiplier
+    //purpose: this function returns the current day or night length in seconds
     private float GetCurrentPhaseLengthSeconds()
     {
         float phaseLengthMinutes = normalPhaseLengthMinutes;
@@ -68,7 +73,7 @@ public class DayNightCycle : MonoBehaviour
     }
 
     //function: SwitchTimeOfDay
-    //purpose: this function changes the game from day to night or night to day
+    //purpose: this function changes between day and night and increases the day counter
     private void SwitchTimeOfDay()
     {
         timePassed = 0f;
@@ -81,7 +86,9 @@ public class DayNightCycle : MonoBehaviour
         else
         {
             currentTime = TimeOfDay.Day;
-            Debug.Log("Day has started.");
+            currentDay++;
+
+            Debug.Log("Day " + currentDay + " has started.");
         }
 
         UpdateVisuals();
@@ -107,7 +114,7 @@ public class DayNightCycle : MonoBehaviour
     }
 
     //function: UpdateTimeText
-    //purpose: this function converts the compressed schedule into a 24-hour clock
+    //purpose: this function displays the current in-game time
     private void UpdateTimeText()
     {
         if (timeText == null)
@@ -117,19 +124,16 @@ public class DayNightCycle : MonoBehaviour
 
         float phaseProgress = timePassed / GetCurrentPhaseLengthSeconds();
 
-        // Each phase represents twelve in-game hours.
         int minutesIntoPhase = Mathf.FloorToInt(phaseProgress * 720f);
 
         int totalMinutes;
 
         if (currentTime == TimeOfDay.Day)
         {
-            // Day begins at 6:00 AM.
             totalMinutes = 6 * 60 + minutesIntoPhase;
         }
         else
         {
-            // Night begins at 6:00 PM.
             totalMinutes = 18 * 60 + minutesIntoPhase;
 
             if (totalMinutes >= 1440)
@@ -156,5 +160,17 @@ public class DayNightCycle : MonoBehaviour
             minute,
             period
         );
+    }
+
+    //function: UpdateDayText
+    //purpose: this function displays the current day number
+    private void UpdateDayText()
+    {
+        if (dayText == null)
+        {
+            return;
+        }
+
+        dayText.text = "Day " + currentDay;
     }
 }
