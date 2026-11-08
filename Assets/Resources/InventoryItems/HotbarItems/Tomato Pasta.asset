@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tomato Pasta
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItem
   itemName: Pasta La Vista
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9c0f6acaa072c694abd298c7d3814161, type: 3}
   description: 
   recipe:
   - item: {fileID: 11400000, guid: 2d04d22fc4c1a6a47bb3924d4519ba1a, type: 2}

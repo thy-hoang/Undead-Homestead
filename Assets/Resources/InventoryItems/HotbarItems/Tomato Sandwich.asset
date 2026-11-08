@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tomato Sandwich
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItem
   itemName: Dead Man's Sandwich
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 01da277980ea11e4ab1298664a7c2489, type: 3}
   description: 
   recipe:
   - item: {fileID: 11400000, guid: 2d04d22fc4c1a6a47bb3924d4519ba1a, type: 2}
