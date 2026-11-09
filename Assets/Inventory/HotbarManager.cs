@@ -10,6 +10,8 @@ public class HotbarManager : MonoBehaviour
 
     public int selectedSlotIndex = 0;
 
+    public TMPro.TextMeshProUGUI slotText;
+
     void Start()
     {
         foreach (Transform child in transform)
@@ -121,6 +123,9 @@ public class HotbarManager : MonoBehaviour
         selectedSlotIndex = slotIndex;
 
         Debug.Log($"HotbarManager: Selected slot {slotIndex}");
+
+        var item = hotbarItems[slotIndex];
+        slotText.text = item?.itemName ?? "";
 
     }
 

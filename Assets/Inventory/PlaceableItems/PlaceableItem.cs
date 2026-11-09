@@ -4,7 +4,7 @@ using UnityEngine;
     fileName = "New Placeable Item",
     menuName = "Inventory/Placeable Item"
 )]
-public class PlaceableItem : HotbarItem
+public class PlaceableItem : Item
 {
     public GameObject prefab;
 
