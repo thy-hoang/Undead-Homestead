@@ -18,3 +18,4 @@ MonoBehaviour:
   prefab: {fileID: 7032639675160087937, guid: 4ccea0be087a09a4cbb1f4f56d2a5a15, type: 3}
   gridSize: {x: 2, y: 2}
   canStore: 1
+  placementRange: 0
