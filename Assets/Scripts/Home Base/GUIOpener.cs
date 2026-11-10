@@ -5,22 +5,33 @@ using UnityEngine.InputSystem;
 public class GUIOpener : MonoBehaviour
 {
     [SerializeField] private BaseEditMode editMode;
-    [SerializeField] private GameObject objectToActivate;
+    [SerializeField] private GameObject guiPrefab;
     [SerializeField] private Camera mainCamera;
 
     private Collider2D objectCollider;
+    private GameObject instantiatedGUI;
 
     private void Awake()
     {
         objectCollider = GetComponent<Collider2D>();
+
         FindSceneReferences();
+
+        if (guiPrefab != null)
+        {
+            instantiatedGUI = Instantiate(
+                guiPrefab            
+                );
+
+            instantiatedGUI.SetActive(false);
+        }
     }
 
     private void Update()
     {
         if (editMode == null ||
             editMode.IsEditing ||
-            objectToActivate == null ||
+            instantiatedGUI == null ||
             objectCollider == null ||
             mainCamera == null ||
             Mouse.current == null ||
@@ -44,7 +55,7 @@ public class GUIOpener : MonoBehaviour
 
         if (objectCollider.OverlapPoint(mouseWorldPosition))
         {
-            objectToActivate.SetActive(true);
+            instantiatedGUI.SetActive(true);
         }
     }
 
