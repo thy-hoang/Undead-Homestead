@@ -23,7 +23,6 @@ public class RecipeButton : MonoBehaviour
 
         hotbarManager = FindObjectOfType<HotbarManager>();
 
-        // Get all of the ingredients for this recipe and print them to the console
         foreach (RecipeIngredient ingredient in consumableItem.recipe)
         {
             // Instantiate a new ingredient UI element for each ingredient

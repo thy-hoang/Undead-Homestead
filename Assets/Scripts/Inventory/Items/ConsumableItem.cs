@@ -5,6 +5,7 @@ using System.Collections.Generic;
                  menuName = "Inventory/Consumable Item")]
 public class ConsumableItem : HotbarItem
 {
+    [Header("Consumable Properties")]
     public List<RecipeIngredient> recipe = new List<RecipeIngredient>();
     public float healthRestored;
 }
