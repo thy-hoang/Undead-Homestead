@@ -741,6 +741,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HotbarManager
   childList: []
   hotbarItems: []
+  selectedSlotBackground: {fileID: 21300000, guid: 7c0364cc55926af44af276777429bae9, type: 3}
+  unselectedSlotBackground: {fileID: 21300000, guid: 6ae41a5bc9420114285ceaf749a8262a, type: 3}
   selectedSlotIndex: 0
   slotText: {fileID: 8555889442986097727}
 --- !u!1 &3205446906130627260

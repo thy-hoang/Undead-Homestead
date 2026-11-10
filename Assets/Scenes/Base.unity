@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 47038864880582745, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 7c0364cc55926af44af276777429bae9, type: 3}
     - target: {fileID: 1977980505916572677, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -319,6 +323,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6136724578965373675, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: selectedSlotBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c0364cc55926af44af276777429bae9, type: 3}
+    - target: {fileID: 6136724578965373675, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: unselectedSlotBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ae41a5bc9420114285ceaf749a8262a, type: 3}
     - target: {fileID: 7093705866762700249, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

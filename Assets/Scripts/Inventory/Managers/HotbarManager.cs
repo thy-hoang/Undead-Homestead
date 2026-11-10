@@ -8,6 +8,9 @@ public class HotbarManager : MonoBehaviour
 
     public List<HotbarItem> hotbarItems = new List<HotbarItem>();
 
+    [SerializeField] private Sprite selectedSlotBackground;
+    [SerializeField] private Sprite unselectedSlotBackground;
+
     public int selectedSlotIndex = 0;
 
     public TMPro.TextMeshProUGUI slotText;
@@ -126,6 +129,22 @@ public class HotbarManager : MonoBehaviour
 
         var item = hotbarItems[slotIndex];
         slotText.text = item?.itemName ?? "";
+
+        //update ui for all slots
+        for (int i = 0; i < childList.Count; i++)
+        {
+            var slotUI = childList[i].transform.GetComponent<UnityEngine.UI.RawImage>();
+            if (i == selectedSlotIndex)
+            {
+                slotUI.texture = selectedSlotBackground.texture;
+
+            }
+            else
+            {   
+                slotUI.texture = unselectedSlotBackground.texture;
+            }
+
+        }
 
     }
 

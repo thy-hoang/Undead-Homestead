@@ -101,6 +101,13 @@ public class CookingPanel : MonoBehaviour
 
     void onCloseButtonClick()
     {
-        gameObject.SetActive(false);
+        if (transform.parent != null)
+        {
+            transform.parent.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError($"CookingPanel: No parent found for {gameObject.name}");
+        }
     }
 }
