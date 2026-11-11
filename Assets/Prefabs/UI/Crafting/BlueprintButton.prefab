@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 721654216019291636}
   - component: {fileID: 5909470059977320980}
   m_Layer: 5
-  m_Name: WeaponIcon
+  m_Name: CraftableIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 5377703878104964700}
   - component: {fileID: 8816523418253662689}
   m_Layer: 5
-  m_Name: WeaponSection
+  m_Name: CraftableSection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 682180458394983731}
   - component: {fileID: 983633520698955467}
   m_Layer: 5
-  m_Name: WeaponInfo
+  m_Name: CraftableInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

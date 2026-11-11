@@ -6,30 +6,30 @@ using UnityEngine.InputSystem;
 public class CraftingPanel : MonoBehaviour
 {
 
-    public List<WeaponItem> weaponItems = new List<WeaponItem>();
+    public List<CraftableItem> craftableItems = new List<CraftableItem>();
 
     [SerializeField] private GameObject buttonPrefab;
 
-    //export a game object that will be used as a parent for the buttons that will be created for each weapon item
+    //export a game object that will be used as a parent for the buttons that will be created for each craftable item
     [SerializeField] private GameObject buttonParent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
-        WeaponItem[] loadedItems = Resources.LoadAll<WeaponItem>("");
+        CraftableItem[] loadedItems = Resources.LoadAll<CraftableItem>("");
 
-        weaponItems.AddRange(loadedItems);
+        craftableItems.AddRange(loadedItems);
 
-        Debug.Log($"CraftingPanel: Loaded {weaponItems.Count} weapon items.");
+        Debug.Log($"CraftingPanel: Loaded {craftableItems.Count} craftable items.");
 
-        // create the blueprint button prefab as a child for each weapon item
-        foreach (WeaponItem item in weaponItems)
+        // create the blueprint button prefab as a child for each craftable item
+        foreach (CraftableItem item in craftableItems)
         {
             GameObject buttonInstance = Instantiate(buttonPrefab, buttonParent.transform);
             buttonInstance.name = item.itemName + "Button";
 
             // set the button's text to the item's name
-            TMPro.TextMeshProUGUI buttonText = buttonInstance.transform.Find("WeaponSection/WeaponInfo/Name")?.GetComponent<TMPro.TextMeshProUGUI>();
+            TMPro.TextMeshProUGUI buttonText = buttonInstance.transform.Find("CraftableSection/CraftableInfo/Name")?.GetComponent<TMPro.TextMeshProUGUI>();
             if (buttonText != null)
             {
                 buttonText.text = item.itemName;
@@ -51,7 +51,7 @@ public class CraftingPanel : MonoBehaviour
             }*/
 
             // set the button's image to the item's icon
-            UnityEngine.UI.RawImage buttonImage = buttonInstance.transform.Find("WeaponSection/WeaponIcon")?.GetComponent<UnityEngine.UI.RawImage>();
+            UnityEngine.UI.RawImage buttonImage = buttonInstance.transform.Find("CraftableSection/CraftableIcon")?.GetComponent<UnityEngine.UI.RawImage>();
             if (buttonImage != null)
             {
                 if (item.icon != null)
@@ -72,7 +72,7 @@ public class CraftingPanel : MonoBehaviour
             BlueprintButton blueprintButton = buttonInstance.GetComponent<BlueprintButton>();
             if (blueprintButton != null)
             {
-                blueprintButton.weaponItem = item;
+                blueprintButton.craftableItem = item;
             }
             else
             {

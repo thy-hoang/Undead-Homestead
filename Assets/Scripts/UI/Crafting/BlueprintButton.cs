@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class BlueprintButton : MonoBehaviour
 {
 
-    public WeaponItem weaponItem; // the weapon item that this button represents
+    public CraftableItem craftableItem; // the craftable item that this button represents
 
     [SerializeField] private GameObject componentPrefab; // prefab for the component UI element
 
@@ -23,7 +23,7 @@ public class BlueprintButton : MonoBehaviour
 
         hotbarManager = FindObjectOfType<HotbarManager>();
 
-        foreach (CraftingComponent component in weaponItem.components)
+        foreach (CraftingComponent component in craftableItem.components)
         {
             // Instantiate a new component UI element for each component
             GameObject componentInstance = Instantiate(componentPrefab, componentsContainerTransform);
@@ -59,7 +59,7 @@ public class BlueprintButton : MonoBehaviour
             }
 
             // if the item is the last item in the recipe, hide the "plus" text element
-            if (component == weaponItem.components[weaponItem.components.Count - 1])
+            if (component == craftableItem.components[craftableItem.components.Count - 1])
             {
                 Transform plusTextTransform = componentInstance.transform.Find("Plus");
                 if (plusTextTransform != null)
@@ -96,7 +96,7 @@ public class BlueprintButton : MonoBehaviour
 
         // check if the player has all of the components for the recipe
         bool hasAllComponents = true;
-        foreach (CraftingComponent component in weaponItem.components)
+        foreach (CraftingComponent component in craftableItem.components)
         {
             if (resourceItemManager.GetResourceItemByName(component.item.itemName).quantity < component.quantity)
             {
@@ -108,7 +108,7 @@ public class BlueprintButton : MonoBehaviour
         // remove the components from the player's inventory if they have all of the components
         if (hasAllComponents)
         {
-            foreach (CraftingComponent component in weaponItem.components)
+            foreach (CraftingComponent component in craftableItem.components)
             {
                 ResourceItem resourceItem = resourceItemManager.GetResourceItemByName(component.item.itemName);
                 if (resourceItem != null)
@@ -124,7 +124,7 @@ public class BlueprintButton : MonoBehaviour
             resourceItemManager.doUpdateDisplay = true;
 
             // add the crafted item to the player's inventory
-            hotbarManager.addItemInNextAvailableSlot(weaponItem);
+            hotbarManager.addItemInNextAvailableSlot(craftableItem);
         }
         else
         {

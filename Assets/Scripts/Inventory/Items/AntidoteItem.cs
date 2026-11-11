@@ -4,6 +4,6 @@ using UnityEngine;
     fileName = "Antidote",
     menuName = "Inventory/Antidote Item"
 )]
-public class AntidoteItem : ConsumableItem
+public class AntidoteItem : CraftableItem
 {
 }

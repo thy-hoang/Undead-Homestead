@@ -5,11 +5,8 @@ using System.Collections.Generic;
     fileName = "Weapon",
     menuName = "Inventory/Weapon Item"
 )]
-public class WeaponItem : HotbarItem
+public class WeaponItem : CraftableItem
 {
-    [Header("Weapon Properties")]
-    public List<CraftingComponent> components = new List<CraftingComponent>();
-
     [Header("Weapon Stats")]
     public float damage;
     public float attackSpeed;
