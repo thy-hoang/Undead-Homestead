@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Wood
   icon: {fileID: 21300000, guid: 6ea90167c35e3b0409138ca6e2703d3b, type: 3}
   description: 
-  quantity: 0
+  quantity: 2
   row: 0
   column: 2

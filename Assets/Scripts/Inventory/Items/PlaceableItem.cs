@@ -6,6 +6,7 @@ using UnityEngine;
 )]
 public class PlaceableItem : Item
 {
+    [Header("Placeable Properties")]
     public GameObject prefab;
 
     public Vector2Int gridSize = Vector2Int.one;
