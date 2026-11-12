@@ -14,6 +14,8 @@ public class BlueprintButton : MonoBehaviour
 
     private HotbarManager hotbarManager;
 
+    private PlaceableInventoryManager placeableInventoryManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,8 @@ public class BlueprintButton : MonoBehaviour
         resourceItemManager = FindAnyObjectByType<ResourceItemManager>();
 
         hotbarManager = FindAnyObjectByType<HotbarManager>();
+
+        placeableInventoryManager = FindAnyObjectByType<PlaceableInventoryManager>();
 
         foreach (CraftingComponent component in craftableItem.components)
         {
@@ -124,7 +128,13 @@ public class BlueprintButton : MonoBehaviour
             resourceItemManager.doUpdateDisplay = true;
 
             // add the crafted item to the player's inventory
-            hotbarManager.addItemInNextAvailableSlot(craftableItem);
+            if (craftableItem is PlaceableItem placeableItem)
+            {
+                placeableInventoryManager.addQuantity(placeableItem, 1);
+            } else {
+                hotbarManager.addItemInNextAvailableSlot(craftableItem);
+            }
+
         }
         else
         {

@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f25fdedb03c184b9b8240cfb1c6ce2, type: 3}
   m_Name: CookingWorkshopItem
   m_EditorClassIdentifier: Assembly-CSharp::PlaceableItem
-  itemName: Cooking Item
+  itemName: Kitchen
   icon: {fileID: 0}
   description: 
+  components: []
   prefab: {fileID: 7032639675160087937, guid: 4ccea0be087a09a4cbb1f4f56d2a5a15, type: 3}
   gridSize: {x: 2, y: 2}
   canStore: 1
   placementRange: 0
+  canCraft: 1

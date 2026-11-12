@@ -25,6 +25,11 @@ public class CraftingPanel : MonoBehaviour
         // create the blueprint button prefab as a child for each craftable item
         foreach (CraftableItem item in craftableItems)
         {
+            if (item is PlaceableItem placeableItem && !placeableItem.canCraft)
+            {
+                continue;
+            }
+
             GameObject buttonInstance = Instantiate(buttonPrefab, buttonParent.transform);
             buttonInstance.name = item.itemName + "Button";
 
@@ -45,7 +50,7 @@ public class CraftingPanel : MonoBehaviour
             {
                 if (item is WeaponItem weaponItem)
                 {
-                    buttonStatsText.text = weaponItem.damage.ToString() + " DMGs " + weaponItem.attackSpeed.ToString() + " ATK SPD " + weaponItem.range.ToString() + " RNG";
+                    buttonStatsText.text = weaponItem.damage.ToString() + " DMG " + weaponItem.attackSpeed.ToString() + " ATK SPD " + weaponItem.range.ToString() + " RNG";
                 }
                 else
                 {
