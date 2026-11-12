@@ -25,6 +25,11 @@ public class CraftingPanel : MonoBehaviour
         // create the blueprint button prefab as a child for each craftable item
         foreach (CraftableItem item in craftableItems)
         {
+            if (item is PlaceableItem placeableItem && !placeableItem.canCraft)
+            {
+                continue;
+            }
+
             GameObject buttonInstance = Instantiate(buttonPrefab, buttonParent.transform);
             buttonInstance.name = item.itemName + "Button";
 
@@ -40,15 +45,22 @@ public class CraftingPanel : MonoBehaviour
             }
 
             // set the button's stats text to the item's health restored value
-            /*TMPro.TextMeshProUGUI buttonStatsText = buttonInstance.transform.Find("FoodSection/FoodInfo/Stats")?.GetComponent<TMPro.TextMeshProUGUI>();
+            TMPro.TextMeshProUGUI buttonStatsText = buttonInstance.transform.Find("CraftableSection/CraftableInfo/Stats")?.GetComponent<TMPro.TextMeshProUGUI>();
             if (buttonStatsText != null)
             {
-                buttonStatsText.text = item.healthRestored.ToString() + " HP";
+                if (item is WeaponItem weaponItem)
+                {
+                    buttonStatsText.text = weaponItem.damage.ToString() + " DMG " + weaponItem.attackSpeed.ToString() + " ATK SPD " + weaponItem.range.ToString() + " RNG";
+                }
+                else
+                {
+                    buttonStatsText.text = item.description;
+                }
             }
             else
             {
                 Debug.LogError($"CraftingPanel: No Stats component found in {buttonInstance.name}");
-            }*/
+            }
 
             // set the button's image to the item's icon
             UnityEngine.UI.RawImage buttonImage = buttonInstance.transform.Find("CraftableSection/CraftableIcon")?.GetComponent<UnityEngine.UI.RawImage>();

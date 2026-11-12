@@ -74,4 +74,27 @@ public class PlaceableInventoryManager : MonoBehaviour
 
         return null;
     }
+
+    public void addQuantity(PlaceableItem item, int quantity)
+    {
+        if (item == null || quantity <= 0)
+            return;
+
+        PlaceableItemQuantity entry = FindEntry(item);
+
+        if (entry == null)
+        {
+            entry = new PlaceableItemQuantity
+            {
+                item = item,
+                quantity = 0
+            };
+
+            startingItems.Add(entry);
+        }
+
+        entry.quantity += quantity;
+
+        InventoryChanged?.Invoke();
+    }
 }

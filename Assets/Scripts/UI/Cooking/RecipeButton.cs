@@ -19,9 +19,9 @@ public class RecipeButton : MonoBehaviour
     {
         Transform ingredientsContainerTransform = transform.Find("IngredientsSection/IngredientsContainer");
 
-        resourceItemManager = FindObjectOfType<ResourceItemManager>();
+        resourceItemManager = FindAnyObjectByType<ResourceItemManager>();
 
-        hotbarManager = FindObjectOfType<HotbarManager>();
+        hotbarManager = FindAnyObjectByType<HotbarManager>();
 
         foreach (RecipeIngredient ingredient in consumableItem.recipe)
         {

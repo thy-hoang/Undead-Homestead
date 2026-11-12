@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: FarmPlotItem
   m_EditorClassIdentifier: Assembly-CSharp::PlaceableItem
   itemName: Farm Plot
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: e38e4896eb47b5c4e81ca08748bf64cc, type: 3}
   description: 
+  components: []
   prefab: {fileID: 4284431888279205059, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
   gridSize: {x: 1, y: 1}
   canStore: 1
+  placementRange: 0
+  canCraft: 1
