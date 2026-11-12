@@ -40,15 +40,22 @@ public class CraftingPanel : MonoBehaviour
             }
 
             // set the button's stats text to the item's health restored value
-            /*TMPro.TextMeshProUGUI buttonStatsText = buttonInstance.transform.Find("FoodSection/FoodInfo/Stats")?.GetComponent<TMPro.TextMeshProUGUI>();
+            TMPro.TextMeshProUGUI buttonStatsText = buttonInstance.transform.Find("CraftableSection/CraftableInfo/Stats")?.GetComponent<TMPro.TextMeshProUGUI>();
             if (buttonStatsText != null)
             {
-                buttonStatsText.text = item.healthRestored.ToString() + " HP";
+                if (item is WeaponItem weaponItem)
+                {
+                    buttonStatsText.text = weaponItem.damage.ToString() + " DMGs " + weaponItem.attackSpeed.ToString() + " ATK SPD " + weaponItem.range.ToString() + " RNG";
+                }
+                else
+                {
+                    buttonStatsText.text = item.description;
+                }
             }
             else
             {
                 Debug.LogError($"CraftingPanel: No Stats component found in {buttonInstance.name}");
-            }*/
+            }
 
             // set the button's image to the item's icon
             UnityEngine.UI.RawImage buttonImage = buttonInstance.transform.Find("CraftableSection/CraftableIcon")?.GetComponent<UnityEngine.UI.RawImage>();

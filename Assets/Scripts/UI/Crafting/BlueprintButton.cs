@@ -19,9 +19,9 @@ public class BlueprintButton : MonoBehaviour
     {
         Transform componentsContainerTransform = transform.Find("ComponentsSection/ComponentsContainer");
 
-        resourceItemManager = FindObjectOfType<ResourceItemManager>();
+        resourceItemManager = FindAnyObjectByType<ResourceItemManager>();
 
-        hotbarManager = FindObjectOfType<HotbarManager>();
+        hotbarManager = FindAnyObjectByType<HotbarManager>();
 
         foreach (CraftingComponent component in craftableItem.components)
         {
