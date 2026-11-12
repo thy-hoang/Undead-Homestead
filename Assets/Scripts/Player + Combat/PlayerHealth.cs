@@ -27,6 +27,14 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void Heal(float amount)
+    {
+        currentHealth += Mathf.RoundToInt(amount);
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+
+        Debug.Log("Player healed. Current health: " + currentHealth);
+    }
+
     private void Die()
     {
         Debug.Log("Player died!");
