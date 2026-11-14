@@ -2699,7 +2699,7 @@ PrefabInstance:
     - target: {fileID: 6025052264207786324, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: hotbarManager
       value: 
-      objectReference: {fileID: 901589543}
+      objectReference: {fileID: 0}
     - target: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.16924
