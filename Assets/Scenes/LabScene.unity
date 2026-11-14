@@ -1019,7 +1019,7 @@ MonoBehaviour:
   playerMovement: {fileID: 1670830307}
   dayNightCycle: {fileID: 810852806}
   interactionPrompt: {fileID: 1311030525}
-  sleepingPanel: {fileID: 0}
+  sleepingPanel: {fileID: 1450942998}
   sleepDuration: 2
 --- !u!1 &570277070
 GameObject:
@@ -2093,7 +2093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1450942999
 RectTransform:
   m_ObjectHideFlags: 0
