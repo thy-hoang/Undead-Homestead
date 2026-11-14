@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1427704366838896833}
   - component: {fileID: 2057204262430450930}
   - component: {fileID: 2204618290488267109}
+  - component: {fileID: 8613864276308687287}
   m_Layer: 6
   m_Name: Easy Zombie
   m_TagString: Untagged
@@ -216,3 +217,17 @@ MonoBehaviour:
   attackRange: 1.2
   attackDamage: 10
   attackCooldown: 1.5
+--- !u!114 &8613864276308687287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384897512951287556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 486c3d51c67f8744d80d815f4761ef19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieCureable
+  spriteRenderer: {fileID: 8850225127928378412}
+  curedColor: {r: 1, g: 0.73051435, b: 0, a: 1}

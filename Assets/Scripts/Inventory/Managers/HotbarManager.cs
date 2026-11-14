@@ -198,4 +198,20 @@ public class HotbarManager : MonoBehaviour
         removeHotbarItem(selectedSlotIndex);
         return true;
     }
+
+    public void clearHotbar()
+    {
+        for (int i = 0; i < hotbarItems.Count; i++)
+        {
+            hotbarItems[i] = null;
+
+            if (i < childList.Count)
+                updateSlotUI(i);
+        }
+
+        if (slotText != null)
+            slotText.text = "";
+
+        Debug.Log("Player hotbar cleared after death.");
+    }
 }

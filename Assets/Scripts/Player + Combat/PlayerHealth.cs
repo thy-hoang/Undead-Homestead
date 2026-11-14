@@ -18,32 +18,46 @@ public class PlayerHealth : MonoBehaviour
             return;
 
         currentHealth -= damage;
+        currentHealth = Mathf.Max(currentHealth, 0);
 
-        Debug.Log("Player health: " + currentHealth);
+        Debug.Log(
+            "Player took damage. Health: " +
+            currentHealth + "/" + maxHealth
+        );
 
         if (currentHealth <= 0)
         {
-            Die();
+            PlayerDeath playerDeath =
+                GetComponent<PlayerDeath>();
+
+            if (playerDeath != null)
+                playerDeath.Die();
         }
     }
 
     public void Heal(float amount)
     {
+        int oldHealth = currentHealth;
+
         currentHealth += Mathf.RoundToInt(amount);
         currentHealth = Mathf.Min(currentHealth, maxHealth);
 
-        Debug.Log("Player healed. Current health: " + currentHealth);
+        int restoredAmount = currentHealth - oldHealth;
+
+        Debug.Log(
+            "Player health restored by " +
+            restoredAmount + ". Current health: " +
+            currentHealth + "/" + maxHealth
+        );
     }
 
-    private void Die()
+    public void ResetHealth()
     {
-        Debug.Log("Player died!");
+        currentHealth = maxHealth;
 
-        PlayerMovement movement = GetComponent<PlayerMovement>();
-
-        if (movement != null)
-        {
-            movement.enabled = false;
-        }
+        Debug.Log(
+            "Player respawned with full health: " +
+            currentHealth + "/" + maxHealth
+        );
     }
 }
