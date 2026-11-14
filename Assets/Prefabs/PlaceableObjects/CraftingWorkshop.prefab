@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6624269203670324998}
   - component: {fileID: 4343705819473848261}
   - component: {fileID: 39840752653220394}
+  - component: {fileID: 237185662343881444}
   m_Layer: 0
   m_Name: CraftingWorkshop
   m_TagString: Untagged
@@ -84,8 +85,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.5631136, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ed6e7eaa66d2fc94bbc3f2f6befafbb8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -161,6 +162,22 @@ MonoBehaviour:
   canStore: 1
   selectionHighlight: {fileID: 6807569507048497491}
   itemDefinition: {fileID: 11400000, guid: fe5beac05cd03d34bbd4367437a1f6cc, type: 2}
+  inventoryManager: {fileID: 0}
+--- !u!114 &237185662343881444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5178662572878287156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b2cfd085b206344a238a822f97a6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GUIOpener
+  editMode: {fileID: 0}
+  guiPrefab: {fileID: 4132660532052492370, guid: a3593bfdaef852a47899b08fc686c147, type: 3}
+  mainCamera: {fileID: 0}
 --- !u!1 &6807569507048497491
 GameObject:
   m_ObjectHideFlags: 0

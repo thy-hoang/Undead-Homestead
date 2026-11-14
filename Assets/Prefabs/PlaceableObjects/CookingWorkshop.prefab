@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 5947868207369821450}
   - component: {fileID: 2994405571661516395}
   - component: {fileID: 1659670081708750443}
+  - component: {fileID: 6335772858611216741}
   m_Layer: 0
   m_Name: CookingWorkshop
   m_TagString: Untagged
@@ -253,3 +254,20 @@ MonoBehaviour:
   canStore: 1
   selectionHighlight: {fileID: 1445364642286868434}
   itemDefinition: {fileID: 11400000, guid: a053c632efd9eea41a996299287d84b8, type: 2}
+  inventoryManager: {fileID: 0}
+--- !u!114 &6335772858611216741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032639675160087937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b2cfd085b206344a238a822f97a6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GUIOpener
+  editMode: {fileID: 0}
+  guiPrefab: {fileID: 4132660532052492370, guid: 4b4333826b6465a4d91ddfe79b47841a, type: 3}
+  canvasTransform: {fileID: 0}
+  mainCamera: {fileID: 0}
