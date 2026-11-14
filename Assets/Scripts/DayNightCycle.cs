@@ -46,6 +46,21 @@ public class DayNightCycle : MonoBehaviour
         UpdateDayText();
     }
 
+    //function: StartNewDay
+    //purpose: this function advances the day and resets the time to 6:00 AM
+    public void StartNewDay()
+    {
+        currentDay++;
+        currentTime = TimeOfDay.Day;
+        timePassed = 0f;
+
+        UpdateVisuals();
+        UpdateTimeText();
+        UpdateDayText();
+
+        Debug.Log("Day " + currentDay + " has started.");
+    }
+
     //function: Update
     //purpose: this function advances time and updates the clock and day counter
     private void Update()
@@ -88,10 +103,7 @@ public class DayNightCycle : MonoBehaviour
         }
         else
         {
-            currentTime = TimeOfDay.Day;
-            currentDay++;
-
-            Debug.Log("Day " + currentDay + " has started.");
+            StartNewDay();
         }
 
         UpdateVisuals();
