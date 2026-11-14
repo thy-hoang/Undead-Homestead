@@ -15,34 +15,18 @@ public class HotbarManager : MonoBehaviour
 
     public TMPro.TextMeshProUGUI slotText;
 
-    private void Start()
+    void Start()
     {
-        childList.Clear();
-
         foreach (Transform child in transform)
         {
             childList.Add(child.gameObject);
         }
 
-        // Remove extra hotbar entries if there are too many
-        while (hotbarItems.Count > childList.Count)
-        {
-            hotbarItems.RemoveAt(hotbarItems.Count - 1);
-        }
-
-        // Add empty entries until there is one for every slot
-        while (hotbarItems.Count < childList.Count)
+        for (int i = 0; i < childList.Count; i++)
         {
             hotbarItems.Add(null);
         }
 
-        // Display items already assigned in the Inspector
-        for (int i = 0; i < hotbarItems.Count; i++)
-        {
-            updateSlotUI(i);
-        }
-
-        selectSlot(selectedSlotIndex);
     }
 
     void setHotbarItem(int slotIndex, HotbarItem item)
@@ -91,22 +75,15 @@ public class HotbarManager : MonoBehaviour
     void updateSlotUI(int slotIndex)
     {
         if (slotIndex < 0 || slotIndex >= childList.Count)
-            return;
-
-        var item = hotbarItems[slotIndex];
-
-        var slotUI = childList[slotIndex]
-            .transform
-            .GetChild(0)
-            .GetComponent<UnityEngine.UI.RawImage>();
-
-        if (slotUI == null)
         {
-            Debug.LogError("ItemRenderer needs a Raw Image component.");
+            Debug.LogError($"Invalid slot index: {slotIndex}");
             return;
         }
 
-        if (item == null || item.icon == null)
+        var item = hotbarItems[slotIndex];
+        
+        var slotUI = childList[slotIndex].transform.GetChild(0).GetComponent<UnityEngine.UI.RawImage>();
+        if (item == null)
         {
             slotUI.texture = null;
             slotUI.color = new Color(1, 1, 1, 0);
@@ -114,7 +91,7 @@ public class HotbarManager : MonoBehaviour
         else
         {
             slotUI.texture = item.icon.texture;
-            slotUI.color = Color.white;
+            slotUI.color = new Color(1, 1, 1, 1);
         }
     }
 
@@ -183,35 +160,5 @@ public class HotbarManager : MonoBehaviour
         }
 
         Debug.LogWarning("HotbarManager: No available slot to add the item.");
-    }
-
-    public HotbarItem getSelectedItem() 
-    {
-        return getHotbarItem(selectedSlotIndex);
-    }
-
-    public bool consumeSelectedItem()
-    {
-        if (getHotbarItem(selectedSlotIndex) == null)
-            return false;
-
-        removeHotbarItem(selectedSlotIndex);
-        return true;
-    }
-
-    public void clearHotbar()
-    {
-        for (int i = 0; i < hotbarItems.Count; i++)
-        {
-            hotbarItems[i] = null;
-
-            if (i < childList.Count)
-                updateSlotUI(i);
-        }
-
-        if (slotText != null)
-            slotText.text = "";
-
-        Debug.Log("Player hotbar cleared after death.");
     }
 }
