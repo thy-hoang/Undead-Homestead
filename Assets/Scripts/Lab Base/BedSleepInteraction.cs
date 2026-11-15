@@ -6,7 +6,12 @@ using UnityEngine.InputSystem;
 public class BedSleepInteraction : MonoBehaviour
 {
     [Header("Player")]
+    [SerializeField] private GameObject player;
     [SerializeField] private Behaviour playerMovement;
+    [SerializeField] private Rigidbody2D playerRigidbody;
+
+    [Header("Bed Position")]
+    [SerializeField] private Transform sleepPosition;
 
     [Header("Day and Night")]
     [SerializeField] private DayNightCycle dayNightCycle;
@@ -22,9 +27,10 @@ public class BedSleepInteraction : MonoBehaviour
 
     private bool playerIsNearby;
     private bool isSleeping;
+    private RigidbodyConstraints2D originalConstraints;
 
     //function: Start
-    //purpose: this function hides the interaction prompt and sleeping panel when the game begins
+    //purpose: this function hides the interaction prompt and sleeping panel at the beginning
     private void Start()
     {
         if (interactionPrompt != null)
@@ -35,6 +41,11 @@ public class BedSleepInteraction : MonoBehaviour
         if (sleepingPanel != null)
         {
             sleepingPanel.SetActive(false);
+        }
+
+        if (playerRigidbody != null)
+        {
+            originalConstraints = playerRigidbody.constraints;
         }
     }
 
@@ -55,7 +66,7 @@ public class BedSleepInteraction : MonoBehaviour
     }
 
     //function: OnTriggerEnter2D
-    //purpose: this function displays the interaction prompt when the player enters the bed range
+    //purpose: this function displays the sleep prompt when the player enters the interaction range
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
@@ -73,7 +84,7 @@ public class BedSleepInteraction : MonoBehaviour
     }
 
     //function: OnTriggerExit2D
-    //purpose: this function hides the interaction prompt when the player leaves the bed range
+    //purpose: this function hides the sleep prompt when the player leaves the interaction range
     private void OnTriggerExit2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
@@ -90,7 +101,7 @@ public class BedSleepInteraction : MonoBehaviour
     }
 
     //function: Sleep
-    //purpose: this function shows the sleeping panel, advances the day, and resets the time
+    //purpose: this function teleports the player to the bed, prevents movement, and advances to the next day
     private IEnumerator Sleep()
     {
         isSleeping = true;
@@ -100,9 +111,24 @@ public class BedSleepInteraction : MonoBehaviour
             interactionPrompt.gameObject.SetActive(false);
         }
 
+        if (player != null && sleepPosition != null)
+        {
+            player.transform.position = new Vector3(
+                sleepPosition.position.x,
+                sleepPosition.position.y,
+                player.transform.position.z
+            );
+        }
+
         if (playerMovement != null)
         {
             playerMovement.enabled = false;
+        }
+
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.linearVelocity = Vector2.zero;
+            playerRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
 
         if (sleepingPanel != null)
@@ -122,6 +148,11 @@ public class BedSleepInteraction : MonoBehaviour
         if (sleepingPanel != null)
         {
             sleepingPanel.SetActive(false);
+        }
+
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.constraints = originalConstraints;
         }
 
         if (playerMovement != null)
