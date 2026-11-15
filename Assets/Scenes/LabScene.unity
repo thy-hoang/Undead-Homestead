@@ -1016,7 +1016,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e9831eb3faa9b479268bae74e1af19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BedSleepInteraction
+  player: {fileID: 606810738}
   playerMovement: {fileID: 1670830307}
+  playerRigidbody: {fileID: 1670830315}
+  sleepPosition: {fileID: 1199589314}
   dayNightCycle: {fileID: 810852806}
   interactionPrompt: {fileID: 1311030525}
   sleepingPanel: {fileID: 1450942998}
@@ -1087,7 +1090,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.02, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1099,6 +1102,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!1 &606810738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+  m_PrefabInstance: {fileID: 1670830301}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &754075331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,7 +1800,7 @@ Transform:
   m_GameObject: {fileID: 1199589313}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0549998, y: -2.78, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3012,6 +3020,10 @@ PrefabInstance:
       propertyPath: hotbarManager
       value: 
       objectReference: {fileID: 1114098290}
+    - target: {fileID: 5233469451217212032, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6025052264207786324, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: hotbarManager
       value: 
@@ -3069,6 +3081,11 @@ Transform:
 --- !u!61 &1670830307 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 8638894506387223974, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+  m_PrefabInstance: {fileID: 1670830301}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1670830315 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 361330866492269156, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
   m_PrefabInstance: {fileID: 1670830301}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1687625195
