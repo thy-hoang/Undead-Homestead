@@ -18,10 +18,10 @@ public class ResourcePickup : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        ResourceItemManager resourceManager =
-            FindFirstObjectByType<ResourceItemManager>();
+        ResourceItemManager resourceItemManager =
+            FindAnyObjectByType<ResourceItemManager>();
 
-        if (resourceManager == null)
+        if (resourceItemManager == null)
         {
             Debug.LogError(
                 "No ResourceItemManager exists in this scene."
@@ -39,10 +39,9 @@ public class ResourcePickup : MonoBehaviour
             return;
         }
 
-        resourceManager.AddResource(
-            resourceItem,
-            amount
-        );
+        resourceItemManager.GetResourceItemByName(resourceItem.itemName).quantity += amount;
+
+        resourceItemManager.doUpdateDisplay = true;
 
         collected = true;
 
