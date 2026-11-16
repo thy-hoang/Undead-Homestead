@@ -11,7 +11,9 @@ public class PlayerAttack : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask harvestableLayer;
     [SerializeField] private HotbarManager hotbarManager;
+    
 
     private float nextAttackTime;
 
@@ -36,6 +38,7 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
 
+
         int finalDamage =
             attackDamage + Mathf.RoundToInt(weapon.damage);
 
@@ -54,6 +57,27 @@ public class PlayerAttack : MonoBehaviour
             $"Range: {finalRadius}, " +
             $"Attack Speed: {finalAttackSpeed}"
         );
+
+        if (weapon.canChopTrees)
+        {
+            Collider2D[] treesHit =
+                Physics2D.OverlapCircleAll(
+                    attackPoint.position,
+                    finalRadius,
+                    harvestableLayer
+                );
+
+            foreach (Collider2D treeCollider in treesHit)
+            {
+                TreeResource tree =
+                    treeCollider.GetComponentInParent<TreeResource>();
+
+                if (tree != null)
+                {
+                    tree.HitWithAxe();
+                }
+            }
+        }
 
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
             attackPoint.position,

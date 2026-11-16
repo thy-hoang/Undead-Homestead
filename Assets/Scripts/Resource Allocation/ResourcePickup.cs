@@ -54,4 +54,9 @@ public class ResourcePickup : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+        public void SetAmount(int newAmount)
+    {
+        amount = newAmount;
+    }
 }
