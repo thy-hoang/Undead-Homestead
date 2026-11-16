@@ -37,7 +37,27 @@ public class ZombieHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        ZombieDropTable dropTable =
+            GetComponentInParent<ZombieDropTable>();
+
+        if (dropTable != null)
+        {
+            dropTable.DropLoot(transform.position);
+        }
+        else
+        {
+            Debug.LogError(
+                "ZombieDropTable was not found on " +
+                gameObject.name
+            );
+        }
+
+        Destroy(gameObject);
     }
 }

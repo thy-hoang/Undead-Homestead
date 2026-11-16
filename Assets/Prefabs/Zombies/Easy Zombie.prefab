@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2057204262430450930}
   - component: {fileID: 2204618290488267109}
   - component: {fileID: 8613864276308687287}
+  - component: {fileID: 825683614420756427}
   m_Layer: 6
   m_Name: Easy Zombie
   m_TagString: Untagged
@@ -231,3 +232,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombieCureable
   spriteRenderer: {fileID: 8850225127928378412}
   curedColor: {r: 1, g: 0.73051435, b: 0, a: 1}
+--- !u!114 &825683614420756427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384897512951287556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f925da5026a524392f426ac3c079eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieDropTable
+  possibleDrops:
+  - dropPrefab: {fileID: 5569387913884282578, guid: 4e670d5c973ebe64bbb55d14d480d0ec, type: 3}
+    minimumDay: 1
+    startingWeight: 40
+    weightIncreasePerDay: 1
+  - dropPrefab: {fileID: 4263484057617876483, guid: de34dac19df6209419ff88f34cbd35b6, type: 3}
+    minimumDay: 1
+    startingWeight: 30
+    weightIncreasePerDay: 1
+  - dropPrefab: {fileID: 8324832492298530509, guid: 50b51c996b9e4504cbc3d9925006c89f, type: 3}
+    minimumDay: 4
+    startingWeight: 20
+    weightIncreasePerDay: 5
+  - dropPrefab: {fileID: 5453263100081123859, guid: 9de71f13d5afe244987492659c1cd690, type: 3}
+    minimumDay: 2
+    startingWeight: 30
+    weightIncreasePerDay: 1
+  - dropPrefab: {fileID: 5976992421764766796, guid: 65379cf7ea2c8844fadb07ec77895c61, type: 3}
+    minimumDay: 2
+    startingWeight: 20
+    weightIncreasePerDay: 1
+  dayNightCycle: {fileID: 8260398511881484745, guid: aaeb17204b45c734e9fce49fab8851b5, type: 3}
+  dropChance: 0.75
+  minimumDrops: 0
+  maximumDrops: 3
+  spawnRadius: 0.3

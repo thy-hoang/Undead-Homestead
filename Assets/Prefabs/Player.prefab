@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 5198416402846158043}
   - component: {fileID: 4747878255050401793}
   - component: {fileID: 6025052264207786324}
+  - component: {fileID: 328992672746680143}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -249,7 +250,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
@@ -266,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d31d721aa78d9d4c9a31f27ced46d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  attackDamage: 25
+  attackDamage: 10
   attackSpeed: 2.5
   attackRadius: 1.5
   attackPoint: {fileID: 677961138609712815}
@@ -334,3 +335,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath
   hotbarManager: {fileID: 0}
   labSceneName: LabScene
+--- !u!114 &328992672746680143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867200813987780921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd16c3921513b344824a3bfb16b419b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCure
+  hotbarManager: {fileID: 0}
+  cureRadius: 1.5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  homeBaseSceneName: Base
