@@ -6,6 +6,10 @@ public class ZombieHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     [SerializeField] private float knockbackDistance = 0.5f;
 
+    [SerializeField] private SimpleFlash flashEffect;
+
+    [SerializeField] private ParticleSystem hitParticleEffect;
+
     private Rigidbody2D rb;
 
     private void Awake()
@@ -35,9 +39,20 @@ public class ZombieHealth : MonoBehaviour
 
         Debug.Log("Zombie health: " + currentHealth);
 
+        onHitEffects();
+
         if (currentHealth <= 0)
         {
             Die();
+        }
+    }
+
+    public void onHitEffects()
+    {
+        flashEffect.Flash();
+        if (hitParticleEffect != null)
+        {
+            hitParticleEffect.Play();
         }
     }
 

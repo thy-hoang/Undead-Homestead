@@ -6,6 +6,8 @@ public class ResourceDisplay : MonoBehaviour
     [SerializeField] private ResourceItemManager itemManager;
     [SerializeField] private ResourceEntryUI entryPrefab;
 
+    [SerializeField] private bool rightAligned = true;
+
     private const float ENTRY_WIDTH = 128f;
     private const float ENTRY_HEIGHT = 64f;
 
@@ -75,9 +77,28 @@ public class ResourceDisplay : MonoBehaviour
 
             RectTransform entryRect = entry.GetComponent<RectTransform>();
 
-            entryRect.anchorMin = new Vector2(1, 1);
-            entryRect.anchorMax = new Vector2(1, 1);
-            entryRect.pivot = new Vector2(1, 1);
+            if (rightAligned)
+            {
+                entryRect.anchorMin = new Vector2(1, 1);
+                entryRect.anchorMax = new Vector2(1, 1);
+                entryRect.pivot = new Vector2(1, 1);
+
+                entryRect.anchoredPosition = new Vector2(
+                    -item.column * ENTRY_WIDTH,
+                    -item.row * (ENTRY_HEIGHT + ROW_SPACING)
+                );
+            }
+            else
+            {
+                entryRect.anchorMin = new Vector2(0, 1);
+                entryRect.anchorMax = new Vector2(0, 1);
+                entryRect.pivot = new Vector2(0, 1);
+
+                entryRect.anchoredPosition = new Vector2(
+                    item.column * ENTRY_WIDTH,
+                    -item.row * (ENTRY_HEIGHT + ROW_SPACING)
+                );
+            }
 
             // count how many items precede this one in its row
             var rowItems = items
@@ -85,11 +106,6 @@ public class ResourceDisplay : MonoBehaviour
                 .ToList();
 
             int index = rowItems.IndexOf(item);
-
-            entryRect.anchoredPosition = new Vector2(
-                -item.column * ENTRY_WIDTH,
-                -item.row * (ENTRY_HEIGHT + ROW_SPACING)
-            );
 
             entry.Initialize(item);
         }
