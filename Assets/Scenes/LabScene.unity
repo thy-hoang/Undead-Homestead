@@ -1526,7 +1526,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press E to view tutorial
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4b85b9998579a7248a55791d06acbf76, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1551,8 +1551,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &775258245
@@ -2109,17 +2109,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
---- !u!114 &1114098290 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6136724578965373675, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
-  m_PrefabInstance: {fileID: 1114098289}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e42d5f44d19d3459050e8358494f26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotbarManager
 --- !u!1 &1126343476
 GameObject:
   m_ObjectHideFlags: 0
@@ -5416,7 +5405,7 @@ PrefabInstance:
     - target: {fileID: 3224861405372686640, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: hotbarManager
       value: 
-      objectReference: {fileID: 1114098290}
+      objectReference: {fileID: 0}
     - target: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5424,11 +5413,11 @@ PrefabInstance:
     - target: {fileID: 4747878255050401793, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: hotbarManager
       value: 
-      objectReference: {fileID: 1114098290}
+      objectReference: {fileID: 0}
     - target: {fileID: 5198416402846158043, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: hotbarManager
       value: 
-      objectReference: {fileID: 1114098290}
+      objectReference: {fileID: 0}
     - target: {fileID: 5233469451217212032, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_SortingOrder
       value: 10
@@ -5436,7 +5425,7 @@ PrefabInstance:
     - target: {fileID: 6025052264207786324, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: hotbarManager
       value: 
-      objectReference: {fileID: 1114098290}
+      objectReference: {fileID: 0}
     - target: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.16924
