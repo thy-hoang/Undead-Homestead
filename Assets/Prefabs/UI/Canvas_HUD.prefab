@@ -741,10 +741,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HotbarManager
   childList: []
   hotbarItems:
+  - {fileID: 11400000, guid: e3825a987e435d14bb36a02334e0403b, type: 2}
+  - {fileID: 11400000, guid: a5b689c4a2e1f404db06a419ed8c2de8, type: 2}
+  - {fileID: 11400000, guid: 77c8f41376c4a89449b1fa0152444d49, type: 2}
   - {fileID: 11400000, guid: 39baa1e6b5925724badc646356f5a958, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1673,7 +1673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d85fefb894f684a852df270b86a7db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResourceDisplay
-  itemManager: {fileID: 0}
+  itemManager: {fileID: 2846760445910133129}
   entryPrefab: {fileID: 1114282109840946079, guid: f7c4b111838a21045aa860bb1fa11c2d, type: 3}
 --- !u!1 &8467471086576306606
 GameObject:
@@ -1781,6 +1781,7 @@ RectTransform:
   - {fileID: 2701690225890557695}
   - {fileID: 3866004709360968162}
   - {fileID: 5342879498951530839}
+  - {fileID: 5463108148158092891}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1852,3 +1853,76 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1001 &8526386880511148685
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4654055407094287481}
+    m_Modifications:
+    - target: {fileID: 4432408839654626518, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -957.3842
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432408839654626518, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -519.12823
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432408839654626518, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432408839654626518, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432408839654626518, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432408839654626518, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432408839654626518, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432408839654626518, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432408839654626518, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432408839654626518, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7161853619349215548, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+      propertyPath: m_Name
+      value: ResourceManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+--- !u!114 &2846760445910133129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5895904860597922564, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+  m_PrefabInstance: {fileID: 8526386880511148685}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc16cf58e8623e4a9d6260932e06673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceItemManager
+--- !u!4 &5463108148158092891 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4432408839654626518, guid: ffd648c8b0b2fe84080d39be675870ab, type: 3}
+  m_PrefabInstance: {fileID: 8526386880511148685}
+  m_PrefabAsset: {fileID: 0}

@@ -11,4 +11,7 @@ public class WeaponItem : CraftableItem
     public float damage;
     public float attackSpeed;
     public float range;
+
+    [Header("Tool Properties")]
+    public bool canChopTrees;
 }
