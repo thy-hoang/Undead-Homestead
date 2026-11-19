@@ -7,11 +7,17 @@ public class ResourceItemManager : MonoBehaviour
 
     public bool doUpdateDisplay = false;
 
-    void Awake()
+    private void Awake()
     {
-        ResourceItem[] loadedItems = Resources.LoadAll<ResourceItem>("");
+        ResourceItem[] loadedItems =
+            Resources.LoadAll<ResourceItem>("");
 
         resourceItems.AddRange(loadedItems);
+
+        Debug.Log(
+            "Loaded resource items: " +
+            resourceItems.Count
+        );
     }
 
     public ResourceItem GetResourceItemByName(string itemName)

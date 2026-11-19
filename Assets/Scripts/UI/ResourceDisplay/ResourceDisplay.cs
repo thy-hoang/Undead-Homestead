@@ -13,12 +13,38 @@ public class ResourceDisplay : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("ResourceDisplay Start() ran.");
+
         GenerateDisplay();
     }
 
     void GenerateDisplay()
     {
+        Debug.Log("GenerateDisplay() ran.");
+
+        if (itemManager == null)
+        {
+            Debug.LogError(
+                "ResourceDisplay has no Item Manager assigned."
+            );
+            return;
+        }
+
+        if (entryPrefab == null)
+        {
+            Debug.LogError(
+                "ResourceDisplay has no Entry Prefab assigned."
+            );
+            return;
+        }
+
         var items = itemManager.resourceItems;
+
+        Debug.Log(
+            "Generating " +
+            itemManager.resourceItems.Count +
+            " resource entries."
+        );
 
         if (items.Count == 0)
             return;
@@ -41,6 +67,11 @@ public class ResourceDisplay : MonoBehaviour
         foreach (var item in items)
         {
             ResourceEntryUI entry = Instantiate(entryPrefab, transform);
+
+            Debug.Log(
+                "Created resource entry for: " +
+                item.itemName
+            );
 
             RectTransform entryRect = entry.GetComponent<RectTransform>();
 
