@@ -35,15 +35,25 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioClip[] zombieTracks;
 
     private DayNightCycle dayNightCycle;
-    private int activeZombieCount;
+    private bool zombiesPresent;
     private bool wasNight;
     private bool isInHomeBase;
     private bool isTransitioning;
     private Coroutine transitionRoutine;
     private AudioClip[] currentPlaylist;
 
+    // ambient track that was interrupted by zombie music, so it can resume where it left off
+    private AudioClip savedAmbientClip;
+    private AudioClip[] savedAmbientPlaylist;
+    private float savedAmbientTime;
+
+    // the last clip played from each playlist
     private readonly Dictionary<AudioClip[], AudioClip> lastClipByPlaylist =
         new Dictionary<AudioClip[], AudioClip>();
+
+    // tracks not yet played in the current "round" of each playlist
+    private readonly Dictionary<AudioClip[], List<AudioClip>> remainingByPlaylist =
+        new Dictionary<AudioClip[], List<AudioClip>>();
 
     //function: Awake
     //purpose: this function keeps one MusicManager active while scenes change
@@ -93,9 +103,10 @@ public class MusicManager : MonoBehaviour
         UpdateDayNightReference();
 
         wasNight = dayNightCycle != null && dayNightCycle.IsNight;
+        zombiesPresent = ZombieSpawner.ActiveZombieCount > 0;
         UpdateHomeBaseState(SceneManager.GetActiveScene().name);
 
-        PlayAmbientMusic();
+        PlayNextTrack();
     }
 
     //function: OnDisable
@@ -117,7 +128,7 @@ public class MusicManager : MonoBehaviour
     //purpose: this function updates the music when a new scene finishes loading
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        activeZombieCount = 0;
+        zombiesPresent = ZombieSpawner.ActiveZombieCount > 0;
 
         UpdateDayNightReference();
         UpdateHomeBaseState(scene.name);
@@ -125,7 +136,7 @@ public class MusicManager : MonoBehaviour
         wasNight = dayNightCycle != null && dayNightCycle.IsNight;
 
         // only change music if the playlist is different, so the track keeps playing between similar scenes
-        RefreshAmbientMusic();
+        RefreshMusic();
     }
 
     //function: UpdateDayNightReference
@@ -165,9 +176,15 @@ public class MusicManager : MonoBehaviour
     }
 
     //function: Update
-    //purpose: this function changes music when the time changes or a track ends
+    //purpose: this function plays zombie music while any zombie exists and handles day/night changes and track endings
     private void Update()
     {
+        bool zombiesNow = ZombieSpawner.ActiveZombieCount > 0;
+        bool zombieStateChanged = zombiesNow != zombiesPresent;
+        zombiesPresent = zombiesNow;
+
+        bool nightChanged = false;
+
         if (dayNightCycle != null)
         {
             bool isNight = dayNightCycle.IsNight;
@@ -175,12 +192,18 @@ public class MusicManager : MonoBehaviour
             if (isNight != wasNight)
             {
                 wasNight = isNight;
-
-                if (activeZombieCount == 0)
-                {
-                    PlayAmbientMusic();
-                }
+                nightChanged = true;
             }
+        }
+
+        if (zombieStateChanged)
+        {
+            // zombies appeared (zombie music) or all are gone (resume ambient)
+            PlayNextTrack();
+        }
+        else if (nightChanged && !zombiesPresent)
+        {
+            PlayAmbientMusic();
         }
 
         if (isTransitioning || AudioListener.pause || !Application.isFocused)
@@ -215,36 +238,132 @@ public class MusicManager : MonoBehaviour
         PlayRandomTrack(GetAmbientPlaylist());
     }
 
-    //function: RefreshAmbientMusic
-    //purpose: this function switches music only if the needed playlist is different from the one playing
-    private void RefreshAmbientMusic()
+    //function: SaveAmbientProgress
+    //purpose: this function remembers which ambient track was playing and where, before zombie music takes over
+    private void SaveAmbientProgress()
     {
-        AudioClip[] targetPlaylist = GetAmbientPlaylist();
+        if (currentPlaylist == null || currentPlaylist == zombieTracks)
+        {
+            return;
+        }
+
+        if (musicSource.clip == null || !musicSource.isPlaying)
+        {
+            return;
+        }
+
+        savedAmbientClip = musicSource.clip;
+        savedAmbientPlaylist = currentPlaylist;
+        savedAmbientTime = musicSource.time;
+    }
+
+    //function: ResumeOrPlayAmbient
+    //purpose: this function resumes the interrupted ambient track if it still fits, otherwise picks a new one
+    private void ResumeOrPlayAmbient()
+    {
+        AudioClip[] playlist = GetAmbientPlaylist();
+
+        AudioClip clip = savedAmbientClip;
+        AudioClip[] savedPlaylist = savedAmbientPlaylist;
+        float time = savedAmbientTime;
+
+        savedAmbientClip = null;
+        savedAmbientPlaylist = null;
+        savedAmbientTime = 0f;
+
+        // resume only if it is still the right playlist (same scene type and time of day)
+        // and the track has more than a couple of seconds left
+        if (clip != null && savedPlaylist == playlist && time < clip.length - 2f)
+        {
+            StartTrack(clip, playlist, time);
+        }
+        else
+        {
+            PlayRandomTrack(playlist);
+        }
+    }
+
+    //function: RefreshMusic
+    //purpose: this function switches music only if the needed playlist is different from the one playing
+    private void RefreshMusic()
+    {
+        AudioClip[] targetPlaylist = zombiesPresent ? zombieTracks : GetAmbientPlaylist();
 
         if (targetPlaylist == currentPlaylist && (musicSource.isPlaying || isTransitioning))
         {
             return;
         }
 
-        PlayRandomTrack(targetPlaylist);
-    }
-
-    //function: PlayNextTrack
-    //purpose: this function chooses the next track based on the current game situation
-    private void PlayNextTrack()
-    {
-        if (activeZombieCount > 0)
+        if (zombiesPresent)
         {
             PlayRandomTrack(zombieTracks);
         }
         else
         {
-            PlayAmbientMusic();
+            ResumeOrPlayAmbient();
         }
     }
 
+    //function: PlayNextTrack
+    //purpose: this function chooses the next track based on whether zombies are present
+    private void PlayNextTrack()
+    {
+        if (zombiesPresent)
+        {
+            PlayRandomTrack(zombieTracks);
+        }
+        else
+        {
+            ResumeOrPlayAmbient();
+        }
+    }
+
+    //function: GetNextShuffledTrack
+    //purpose: this function plays every track in a playlist once before any track repeats
+    private AudioClip GetNextShuffledTrack(AudioClip[] tracks)
+    {
+        if (!remainingByPlaylist.TryGetValue(tracks, out List<AudioClip> remaining))
+        {
+            remaining = new List<AudioClip>();
+            remainingByPlaylist[tracks] = remaining;
+        }
+
+        // all tracks have played, so start a new round with every track again
+        if (remaining.Count == 0)
+        {
+            foreach (AudioClip clip in tracks)
+            {
+                if (clip != null)
+                {
+                    remaining.Add(clip);
+                }
+            }
+        }
+
+        if (remaining.Count == 0)
+        {
+            return null;
+        }
+
+        lastClipByPlaylist.TryGetValue(tracks, out AudioClip lastClip);
+
+        int index = UnityEngine.Random.Range(0, remaining.Count);
+
+        // after a refill, don't let the new round start with the track that just played
+        if (remaining.Count > 1 && remaining[index] == lastClip)
+        {
+            index = (index + 1) % remaining.Count;
+        }
+
+        AudioClip selected = remaining[index];
+        remaining.RemoveAt(index);
+        lastClipByPlaylist[tracks] = selected;
+
+        return selected;
+    }
+
     //function: PlayRandomTrack
-    //purpose: this function picks a track while avoiding an immediate repeat
+    //purpose: this function picks the next shuffled track and fades to it
     private void PlayRandomTrack(AudioClip[] tracks)
     {
         if (tracks == null || tracks.Length == 0)
@@ -252,37 +371,39 @@ public class MusicManager : MonoBehaviour
             return;
         }
 
-        lastClipByPlaylist.TryGetValue(tracks, out AudioClip lastClip);
-
-        AudioClip selectedTrack = tracks[UnityEngine.Random.Range(0, tracks.Length)];
-
-        if (tracks.Length > 1)
+        // remember the ambient track before zombie music replaces it
+        if (tracks == zombieTracks)
         {
-            for (int attempt = 0; attempt < 10 && selectedTrack == lastClip; attempt++)
-            {
-                selectedTrack = tracks[UnityEngine.Random.Range(0, tracks.Length)];
-            }
+            SaveAmbientProgress();
         }
+
+        AudioClip selectedTrack = GetNextShuffledTrack(tracks);
 
         if (selectedTrack == null)
         {
             return;
         }
 
-        lastClipByPlaylist[tracks] = selectedTrack;
-        currentPlaylist = tracks;
+        StartTrack(selectedTrack, tracks, 0f);
+    }
+
+    //function: StartTrack
+    //purpose: this function fades to a clip, starting at the given time
+    private void StartTrack(AudioClip clip, AudioClip[] playlist, float startTime)
+    {
+        currentPlaylist = playlist;
 
         if (transitionRoutine != null)
         {
             StopCoroutine(transitionRoutine);
         }
 
-        transitionRoutine = StartCoroutine(FadeToTrack(selectedTrack));
+        transitionRoutine = StartCoroutine(FadeToTrack(clip, startTime));
     }
 
     //function: FadeToTrack
     //purpose: this function fades out the current track and fades in the new track
-    private IEnumerator FadeToTrack(AudioClip newClip)
+    private IEnumerator FadeToTrack(AudioClip newClip, float startTime)
     {
         isTransitioning = true;
 
@@ -299,6 +420,7 @@ public class MusicManager : MonoBehaviour
         musicSource.clip = newClip;
         musicSource.loop = false;
         musicSource.volume = 0f;
+        musicSource.time = Mathf.Clamp(startTime, 0f, Mathf.Max(0f, newClip.length - 0.1f));
         musicSource.Play();
 
         yield return FadeVolume(
@@ -336,32 +458,5 @@ public class MusicManager : MonoBehaviour
         }
 
         musicSource.volume = to;
-    }
-
-    //function: ZombieSpawned
-    //purpose: this function begins zombie music when a zombie appears
-    public void ZombieSpawned()
-    {
-        activeZombieCount++;
-
-        if (activeZombieCount == 1)
-        {
-            PlayRandomTrack(zombieTracks);
-        }
-    }
-
-    //function: ZombieDefeated
-    //purpose: this function returns to the correct ambient music after zombies are gone
-    public void ZombieDefeated()
-    {
-        activeZombieCount = Mathf.Max(
-            0,
-            activeZombieCount - 1
-        );
-
-        if (activeZombieCount == 0)
-        {
-            PlayAmbientMusic();
-        }
     }
 }
