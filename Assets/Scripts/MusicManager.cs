@@ -42,8 +42,13 @@ public class MusicManager : MonoBehaviour
     private Coroutine transitionRoutine;
     private AudioClip[] currentPlaylist;
 
+    // the last clip played from each playlist
     private readonly Dictionary<AudioClip[], AudioClip> lastClipByPlaylist =
         new Dictionary<AudioClip[], AudioClip>();
+
+    // tracks not yet played in the current "round" of each playlist
+    private readonly Dictionary<AudioClip[], List<AudioClip>> remainingByPlaylist =
+        new Dictionary<AudioClip[], List<AudioClip>>();
 
     //function: Awake
     //purpose: this function keeps one MusicManager active while scenes change
@@ -243,8 +248,52 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    //function: GetNextShuffledTrack
+    //purpose: this function plays every track in a playlist once before any track repeats
+    private AudioClip GetNextShuffledTrack(AudioClip[] tracks)
+    {
+        if (!remainingByPlaylist.TryGetValue(tracks, out List<AudioClip> remaining))
+        {
+            remaining = new List<AudioClip>();
+            remainingByPlaylist[tracks] = remaining;
+        }
+
+        // all tracks have played, so start a new round with every track again
+        if (remaining.Count == 0)
+        {
+            foreach (AudioClip clip in tracks)
+            {
+                if (clip != null)
+                {
+                    remaining.Add(clip);
+                }
+            }
+        }
+
+        if (remaining.Count == 0)
+        {
+            return null;
+        }
+
+        lastClipByPlaylist.TryGetValue(tracks, out AudioClip lastClip);
+
+        int index = UnityEngine.Random.Range(0, remaining.Count);
+
+        // after a refill, don't let the new round start with the track that just played
+        if (remaining.Count > 1 && remaining[index] == lastClip)
+        {
+            index = (index + 1) % remaining.Count;
+        }
+
+        AudioClip selected = remaining[index];
+        remaining.RemoveAt(index);
+        lastClipByPlaylist[tracks] = selected;
+
+        return selected;
+    }
+
     //function: PlayRandomTrack
-    //purpose: this function picks a track while avoiding an immediate repeat
+    //purpose: this function picks the next shuffled track and fades to it
     private void PlayRandomTrack(AudioClip[] tracks)
     {
         if (tracks == null || tracks.Length == 0)
@@ -252,24 +301,13 @@ public class MusicManager : MonoBehaviour
             return;
         }
 
-        lastClipByPlaylist.TryGetValue(tracks, out AudioClip lastClip);
-
-        AudioClip selectedTrack = tracks[UnityEngine.Random.Range(0, tracks.Length)];
-
-        if (tracks.Length > 1)
-        {
-            for (int attempt = 0; attempt < 10 && selectedTrack == lastClip; attempt++)
-            {
-                selectedTrack = tracks[UnityEngine.Random.Range(0, tracks.Length)];
-            }
-        }
+        AudioClip selectedTrack = GetNextShuffledTrack(tracks);
 
         if (selectedTrack == null)
         {
             return;
         }
 
-        lastClipByPlaylist[tracks] = selectedTrack;
         currentPlaylist = tracks;
 
         if (transitionRoutine != null)
