@@ -15,15 +15,11 @@ public class ResourceDisplay : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("ResourceDisplay Start() ran.");
-
         GenerateDisplay();
     }
 
     void GenerateDisplay()
     {
-        Debug.Log("GenerateDisplay() ran.");
-
         if (itemManager == null)
         {
             Debug.LogError(
@@ -69,11 +65,6 @@ public class ResourceDisplay : MonoBehaviour
         foreach (var item in items)
         {
             ResourceEntryUI entry = Instantiate(entryPrefab, transform);
-
-            Debug.Log(
-                "Created resource entry for: " +
-                item.itemName
-            );
 
             RectTransform entryRect = entry.GetComponent<RectTransform>();
 

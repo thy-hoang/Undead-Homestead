@@ -1,12 +1,15 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Objective", menuName = "Objectives/Objective")]
+[CreateAssetMenu(menuName = "Objectives/Objective")]
 public class Objective : ScriptableObject
 {
-    public Objective parentObjective;
+    public string objectiveID;
     public string objectiveName;
-    public string description;
+    [TextArea] public string description;
 
+    public Objective parent;
+
+    [Header("Requirements")]
     public string statistic;
-    public int targetAmount;
+    public int targetAmount = 1;
 }

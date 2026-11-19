@@ -73,6 +73,8 @@ public class ZombieHealth : MonoBehaviour
             );
         }
 
+        StatisticsManager.Instance.Increment("ZombiesKilled", 1);
+
         Destroy(gameObject);
     }
 }
