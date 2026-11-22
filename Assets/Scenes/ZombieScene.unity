@@ -1126,7 +1126,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.060000002, y: 0.060000002, z: 0}
@@ -6667,10 +6667,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 550169003597313385, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 1140217057057717386, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6761,7 +6757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4471418915177272523, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4471418915177272523, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -6786,6 +6782,10 @@ PrefabInstance:
     - target: {fileID: 4786220009095859145, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929264891825568967, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
+      propertyPath: m_text
+      value: 6:00 AM
       objectReference: {fileID: 0}
     - target: {fileID: 5590545981729508245, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
       propertyPath: m_Name
@@ -6798,10 +6798,6 @@ PrefabInstance:
     - target: {fileID: 7612583133667048177, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612583133667048177, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7612583133667048177, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7006,6 +7002,10 @@ PrefabInstance:
       propertyPath: timeText
       value: 
       objectReference: {fileID: 1183155050}
+    - target: {fileID: 8260398511881484745, guid: aaeb17204b45c734e9fce49fab8851b5, type: 3}
+      propertyPath: timeMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7249,6 +7249,10 @@ PrefabInstance:
     - target: {fileID: 5968509786089811907, guid: 923b8d3d35001ad40a29281ad0b4ca0a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8526455996691012339, guid: 923b8d3d35001ad40a29281ad0b4ca0a, type: 3}
+      propertyPath: dayZombiesPerMinute
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

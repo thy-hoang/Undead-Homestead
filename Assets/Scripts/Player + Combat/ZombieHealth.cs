@@ -4,11 +4,15 @@ public class ZombieHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
-    [SerializeField] private float knockbackDistance = 0.5f;
 
     [SerializeField] private SimpleFlash flashEffect;
 
     [SerializeField] private ParticleSystem hitParticleEffect;
+
+    [SerializeField] private float knockbackForce = 7f;
+    [SerializeField] private float knockbackDuration = 0.34f;
+
+    private ZombieFollow zombieFollow;
 
     private Rigidbody2D rb;
 
@@ -16,6 +20,7 @@ public class ZombieHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+        zombieFollow = GetComponent<ZombieFollow>();
     }
 
     public void TakeDamage(int damage, Vector2 attackerPosition)
@@ -27,14 +32,14 @@ public class ZombieHealth : MonoBehaviour
 
         if (rb != null)
         {
-            rb.MovePosition(
-                rb.position + knockbackDirection * knockbackDistance
-            );
+            StartCoroutine(ApplyKnockback(knockbackDirection));
         }
         else
         {
-            transform.position +=
-                (Vector3)(knockbackDirection * knockbackDistance);
+            Debug.LogError(
+                "Rigidbody2D component not found on " +
+                gameObject.name
+            );
         }
 
         Debug.Log("Zombie health: " + currentHealth);
@@ -76,5 +81,38 @@ public class ZombieHealth : MonoBehaviour
         StatisticsManager.Instance.Increment("ZombiesKilled", 1);
 
         Destroy(gameObject);
+    }
+
+    private System.Collections.IEnumerator ApplyKnockback(
+        Vector2 direction
+    )
+    {
+        if (zombieFollow != null)
+            zombieFollow.IsKnockedBack = true;
+
+        float elapsedTime = 0f;
+        Vector2 initialVelocity = direction * knockbackForce;
+
+        while (elapsedTime < knockbackDuration)
+        {
+            float t = Mathf.SmoothStep(0f, 1f, elapsedTime / knockbackDuration);
+
+            Vector2 currentVelocity = Vector2.Lerp(
+                initialVelocity,
+                Vector2.zero,
+                t
+            );
+
+            rb.MovePosition(
+                rb.position + currentVelocity * Time.fixedDeltaTime
+            );
+
+            elapsedTime += Time.fixedDeltaTime;
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        if (zombieFollow != null)
+            zombieFollow.IsKnockedBack = false;
     }
 }
