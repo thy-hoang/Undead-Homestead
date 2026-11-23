@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class ZombieSpawnEntry
@@ -32,8 +33,8 @@ public class ZombieSpawner : MonoBehaviour
 
     [Header("Spawn Rate")]
     [SerializeField] private DayNightCycle dayNightCycle;
-    [SerializeField] private float dayZombiesPerMinute = 2f;
-    [SerializeField] private float nightZombiesPerMinute = 10f;
+    [SerializeField] private float dayZombiesSpawnRate = 2f;
+    [SerializeField] private float nightZombiesSpawnRate = 10f;
 
     [SerializeField] private float distanceOutsideCamera = 1f;
 
@@ -41,6 +42,8 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] private Camera spawnCamera;
 
     private float spawnTimer;
+    public static int ActiveZombieCount { get; private set; }
+    private readonly List<GameObject> spawnedZombies = new List<GameObject>();
 
     private void Start()
     {
@@ -52,6 +55,15 @@ public class ZombieSpawner : MonoBehaviour
 
     private void Update()
     {
+        PruneDeadZombies();
+
+        if (zombieTypes == null ||
+            zombieTypes.Length == 0 ||
+            spawnCamera == null)
+        {
+            return;
+        }
+
         if (zombieTypes == null ||
             zombieTypes.Length == 0 ||
             spawnCamera == null)
@@ -63,11 +75,11 @@ public class ZombieSpawner : MonoBehaviour
 
         if (dayNightCycle != null && dayNightCycle.IsNight)
         {
-            currentSpawnRate = nightZombiesPerMinute;
+            currentSpawnRate = nightZombiesSpawnRate;
         }
         else
         {
-            currentSpawnRate = dayZombiesPerMinute;
+            currentSpawnRate = dayZombiesSpawnRate;
         }
 
         if (currentSpawnRate <= 0f)
@@ -86,12 +98,7 @@ public class ZombieSpawner : MonoBehaviour
 
     private void SpawnZombie()
     {
-        int currentZombieCount =
-            FindObjectsByType<ZombieHealth>(
-                FindObjectsSortMode.None
-            ).Length;
-
-        if (currentZombieCount >= maxZombies)
+        if (spawnedZombies.Count >= maxZombies)
             return;
 
         GameObject selectedZombie = GetRandomZombiePrefab();
@@ -143,11 +150,14 @@ public class ZombieSpawner : MonoBehaviour
             selectedZombie.transform.position.z
         );
 
-        Instantiate(
+        GameObject zombie = Instantiate(
             selectedZombie,
             spawnPosition,
             Quaternion.identity
         );
+
+        spawnedZombies.Add(zombie);
+        ActiveZombieCount = spawnedZombies.Count;
     }
 
     private GameObject GetRandomZombiePrefab()
@@ -186,5 +196,36 @@ public class ZombieSpawner : MonoBehaviour
         }
 
         return null;
+    }
+
+    //function: Awake
+    //purpose: this function resets the static counter when the scene starts
+    private void Awake()
+    {
+        ActiveZombieCount = 0;
+    }
+
+    //function: OnDestroy
+    //purpose: this function resets the static counter when the scene unloads
+    private void OnDestroy()
+    {
+        ActiveZombieCount = 0;
+    }
+
+    //function: PruneDeadZombies
+    //purpose: this function removes destroyed or deactivated zombies and updates the static counter
+    private void PruneDeadZombies()
+    {
+        for (int i = spawnedZombies.Count - 1; i >= 0; i--)
+        {
+            GameObject zombie = spawnedZombies[i];
+
+            if (zombie == null || !zombie.activeInHierarchy)
+            {
+                spawnedZombies.RemoveAt(i);
+            }
+        }
+
+        ActiveZombieCount = spawnedZombies.Count;
     }
 }
