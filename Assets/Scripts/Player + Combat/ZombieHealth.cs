@@ -12,6 +12,9 @@ public class ZombieHealth : MonoBehaviour
     [SerializeField] private float knockbackForce = 7f;
     [SerializeField] private float knockbackDuration = 0.34f;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip onHitSound;
+
     private ZombieFollow zombieFollow;
 
     private Rigidbody2D rb;
@@ -58,6 +61,12 @@ public class ZombieHealth : MonoBehaviour
         if (hitParticleEffect != null)
         {
             hitParticleEffect.Play();
+        }
+
+        // Sound effect
+        if (audioSource != null && onHitSound != null)
+        {
+            audioSource.PlayOneShot(onHitSound);
         }
     }
 
