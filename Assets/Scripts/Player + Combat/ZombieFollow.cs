@@ -6,6 +6,8 @@ public class ZombieFollow : MonoBehaviour
     [SerializeField] private float moveSpeed = 1.5f;
     [SerializeField] private float stoppingDistance = 1.0f;
 
+    public bool IsKnockedBack { get; set; }
+
     private Rigidbody2D rb;
 
     private void Awake()
@@ -25,20 +27,20 @@ public class ZombieFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (target == null)
+        if (target == null || IsKnockedBack)
             return;
+
+        Vector2 direction = ((Vector2)target.position - rb.position).normalized;
 
         float distance = Vector2.Distance(rb.position, target.position);
 
         if (distance > stoppingDistance)
         {
-            Vector2 newPosition = Vector2.MoveTowards(
-                rb.position,
-                target.position,
-                moveSpeed * Time.fixedDeltaTime
-            );
-
-            rb.MovePosition(newPosition);
+            rb.linearVelocity = direction * moveSpeed;
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
         }
     }
 }

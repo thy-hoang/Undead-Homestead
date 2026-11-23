@@ -176,8 +176,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.59119487, g: 0.38475582, b: 0.18405117, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e38e4896eb47b5c4e81ca08748bf64cc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -253,3 +253,4 @@ MonoBehaviour:
   canStore: 1
   selectionHighlight: {fileID: 1519603428303611171}
   itemDefinition: {fileID: 11400000, guid: 82384cd448ff3f24ba03a2b6f5fb890e, type: 2}
+  inventoryManager: {fileID: 0}
