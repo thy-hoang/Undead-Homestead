@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Antidote
   m_EditorClassIdentifier: Assembly-CSharp::AntidoteItem
   itemName: Cure
-  icon: {fileID: 21300000, guid: 3d885b68eb860314d86368b3f92a1780, type: 3}
+  icon: {fileID: 21300000, guid: b0e068347a8ed534e8565b9343489a81, type: 3}
   description: 
   components: []

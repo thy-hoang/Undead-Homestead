@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2204618290488267109}
   - component: {fileID: 8613864276308687287}
   - component: {fileID: 825683614420756427}
+  - component: {fileID: 8360287543839230948}
   m_Layer: 6
   m_Name: Easy Zombie
   m_TagString: Untagged
@@ -186,7 +187,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombieHealth
   maxHealth: 100
   currentHealth: 0
-  knockbackDistance: 1
+  flashEffect: {fileID: 8360287543839230948}
+  hitParticleEffect: {fileID: 0}
+  knockbackForce: 7
+  knockbackDuration: 0.34
 --- !u!114 &2057204262430450930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,3 +274,17 @@ MonoBehaviour:
   minimumDrops: 0
   maximumDrops: 3
   spawnRadius: 0.3
+--- !u!114 &8360287543839230948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384897512951287556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91cc2448f626c7444982a069aa5f284c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BarthaSzabolcs.Tutorial_SpriteFlash.SimpleFlash
+  flashMaterial: {fileID: 2100000, guid: affddab9e395d2f44bc645763307eeda, type: 2}
+  duration: 0.125

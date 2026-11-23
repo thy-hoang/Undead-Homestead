@@ -148,8 +148,6 @@ public class HotbarManager : MonoBehaviour
 
         selectedSlotIndex = slotIndex;
 
-        Debug.Log($"HotbarManager: Selected slot {slotIndex}");
-
         var item = hotbarItems[slotIndex];
         slotText.text = item?.itemName ?? "";
 
