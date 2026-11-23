@@ -5484,7 +5484,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a3b9caf51c6b26a40bd0e041bbe13427, type: 3}
   homeBaseSceneNames:
   - LabScene
-  - Base
+  - BaseScene
   homeBaseDaytimeTracks:
   - {fileID: 8300000, guid: d9a769d0e081947498a24baae729a9f2, type: 3}
   homeBaseNighttimeTracks:
