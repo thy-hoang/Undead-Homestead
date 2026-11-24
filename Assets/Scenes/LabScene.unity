@@ -5107,11 +5107,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -1.15
       objectReference: {fileID: 0}
     - target: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.69
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5484,7 +5484,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a3b9caf51c6b26a40bd0e041bbe13427, type: 3}
   homeBaseSceneNames:
   - LabScene
-  - Base
+  - BaseScene
   homeBaseDaytimeTracks:
   - {fileID: 8300000, guid: d9a769d0e081947498a24baae729a9f2, type: 3}
   homeBaseNighttimeTracks:
