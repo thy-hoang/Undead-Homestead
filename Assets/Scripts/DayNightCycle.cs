@@ -30,20 +30,59 @@ public class DayNightCycle : MonoBehaviour
     private float timePassed;
     private int currentDay = 1;
 
+    // Saved clock state that survives scene loads
+    private static bool hasSavedState = false;
+    private static TimeOfDay savedTime = TimeOfDay.Day;
+    private static float savedTimePassed = 0f;
+    private static int savedDay = 1;
+
+    // Makes sure old state doesn't carry over between Play sessions in the Editor
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetStaticState()
+    {
+        hasSavedState = false;
+    }
+
     public bool IsNight => currentTime == TimeOfDay.Night;
     public int CurrentDay => currentDay;
 
     //function: Start
-    //purpose: this function sets the starting time, day number, and UI
+    //purpose: this function restores the saved time and day if they exist, otherwise sets the starting time
     private void Start()
     {
-        currentTime = TimeOfDay.Day;
-        timePassed = 0f;
-        currentDay = 1;
+        if (hasSavedState)
+        {
+            currentTime = savedTime;
+            timePassed = savedTimePassed;
+            currentDay = savedDay;
+        }
+        else
+        {
+            currentTime = TimeOfDay.Day;
+            timePassed = 0f;
+            currentDay = 1;
+        }
 
         UpdateVisuals();
         UpdateTimeText();
         UpdateDayText();
+    }
+
+    //function: SaveState
+    //purpose: this function stores the current time and day so the next scene can continue from them
+    private void SaveState()
+    {
+        savedTime = currentTime;
+        savedTimePassed = timePassed;
+        savedDay = currentDay;
+        hasSavedState = true;
+    }
+
+    //function: OnDestroy
+    //purpose: this function saves the clock when the scene is unloaded
+    private void OnDestroy()
+    {
+        SaveState();
     }
 
     //function: StartNewDay
