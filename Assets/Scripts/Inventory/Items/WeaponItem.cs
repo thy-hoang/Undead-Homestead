@@ -14,4 +14,7 @@ public class WeaponItem : CraftableItem
 
     [Header("Tool Properties")]
     public bool canChopTrees;
+
+    [Header("Tool Properties")]
+    public bool canMineRocks;
 }

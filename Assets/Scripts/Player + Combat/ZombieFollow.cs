@@ -2,13 +2,64 @@ using UnityEngine;
 
 public class ZombieFollow : MonoBehaviour
 {
+    [Header("Follow Settings")]
     [SerializeField] private Transform target;
     [SerializeField] private float moveSpeed = 1.5f;
-    [SerializeField] private float stoppingDistance = 1.0f;
+    [SerializeField] private float stoppingDistance = 1f;
 
-    public bool IsKnockedBack { get; set; }
+    [Header("Knockback Settings")]
+    [SerializeField] private float knockbackRecoveryTime = 0.34f;
 
     private Rigidbody2D rb;
+    private float knockbackEndTime;
+
+    public bool IsKnockedBack
+    {
+        get
+        {
+            return Time.time < knockbackEndTime;
+        }
+        set
+        {
+            if (value)
+            {
+                knockbackEndTime =
+                    Time.time + knockbackRecoveryTime;
+            }
+            else
+            {
+                knockbackEndTime = 0f;
+            }
+        }
+    }
+
+    private void Start()
+    {
+        FindPlayer();
+    }
+
+    private void FindPlayer()
+    {
+        GameObject player =
+            GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null)
+        {
+            target = player.transform;
+
+            Debug.Log(
+                gameObject.name +
+                " is following " +
+                player.name
+            );
+        }
+        else
+        {
+            Debug.LogError(
+                "No active object tagged Player was found."
+            );
+        }
+    }
 
     private void Awake()
     {
@@ -16,31 +67,65 @@ public class ZombieFollow : MonoBehaviour
 
         if (target == null)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            GameObject player =
+                GameObject.FindGameObjectWithTag("Player");
 
             if (player != null)
             {
                 target = player.transform;
             }
+            else
+            {
+                Debug.LogError(
+                    "ZombieFollow could not find the Player."
+                );
+            }
+        }
+
+        if (rb == null)
+        {
+            Debug.LogError(
+                "ZombieFollow requires a Rigidbody2D on " +
+                gameObject.name
+            );
         }
     }
 
     private void FixedUpdate()
     {
-        if (target == null || IsKnockedBack)
+        if (target == null)
             return;
 
-        Vector2 direction = ((Vector2)target.position - rb.position).normalized;
+        Vector2 currentPosition = rb.position;
+        Vector2 targetPosition = target.position;
 
-        float distance = Vector2.Distance(rb.position, target.position);
+        float distance =
+            Vector2.Distance(
+                currentPosition,
+                targetPosition
+            );
 
-        if (distance > stoppingDistance)
-        {
-            rb.linearVelocity = direction * moveSpeed;
-        }
-        else
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
+        if (distance <= stoppingDistance)
+            return;
+
+        Vector2 newPosition = Vector2.MoveTowards(
+            currentPosition,
+            targetPosition,
+            moveSpeed * Time.fixedDeltaTime
+        );
+
+        // Debug.Log(
+        //     gameObject.name +
+        //     " current: " + currentPosition +
+        //     " target: " + targetPosition +
+        //     " new: " + newPosition
+        // );
+
+        rb.position = newPosition;
+    }
+
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
     }
 }

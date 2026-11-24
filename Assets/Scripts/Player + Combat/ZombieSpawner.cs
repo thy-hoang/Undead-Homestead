@@ -101,45 +101,81 @@ public class ZombieSpawner : MonoBehaviour
         if (spawnedZombies.Count >= maxZombies)
             return;
 
-        GameObject selectedZombie = GetRandomZombiePrefab();
+        GameObject selectedZombie =
+            GetRandomZombiePrefab();
 
         if (selectedZombie == null)
             return;
 
-        Vector3 cameraPosition = spawnCamera.transform.position;
+        GameObject player =
+            GameObject.FindGameObjectWithTag("Player");
 
-        float halfHeight = spawnCamera.orthographicSize;
-        float halfWidth = halfHeight * spawnCamera.aspect;
+        if (player == null)
+        {
+            Debug.LogError(
+                "ZombieSpawner could not find an object tagged Player."
+            );
+            return;
+        }
 
-        float leftEdge = cameraPosition.x - halfWidth;
-        float rightEdge = cameraPosition.x + halfWidth;
-        float bottomEdge = cameraPosition.y - halfHeight;
-        float topEdge = cameraPosition.y + halfHeight;
+        Vector3 cameraPosition =
+            spawnCamera.transform.position;
+
+        float halfHeight =
+            spawnCamera.orthographicSize;
+
+        float halfWidth =
+            halfHeight * spawnCamera.aspect;
+
+        float leftEdge =
+            cameraPosition.x - halfWidth;
+
+        float rightEdge =
+            cameraPosition.x + halfWidth;
+
+        float bottomEdge =
+            cameraPosition.y - halfHeight;
+
+        float topEdge =
+            cameraPosition.y + halfHeight;
 
         float spawnX;
         float spawnY;
 
-        int randomSide = Random.Range(0, 4);
+        int randomSide =
+            Random.Range(0, 4);
 
         switch (randomSide)
         {
             case 0:
                 spawnX = leftEdge - distanceOutsideCamera;
-                spawnY = Random.Range(bottomEdge, topEdge);
+                spawnY = Random.Range(
+                    bottomEdge,
+                    topEdge
+                );
                 break;
 
             case 1:
                 spawnX = rightEdge + distanceOutsideCamera;
-                spawnY = Random.Range(bottomEdge, topEdge);
+                spawnY = Random.Range(
+                    bottomEdge,
+                    topEdge
+                );
                 break;
 
             case 2:
-                spawnX = Random.Range(leftEdge, rightEdge);
+                spawnX = Random.Range(
+                    leftEdge,
+                    rightEdge
+                );
                 spawnY = bottomEdge - distanceOutsideCamera;
                 break;
 
             default:
-                spawnX = Random.Range(leftEdge, rightEdge);
+                spawnX = Random.Range(
+                    leftEdge,
+                    rightEdge
+                );
                 spawnY = topEdge + distanceOutsideCamera;
                 break;
         }
@@ -150,14 +186,39 @@ public class ZombieSpawner : MonoBehaviour
             selectedZombie.transform.position.z
         );
 
-        GameObject zombie = Instantiate(
-            selectedZombie,
-            spawnPosition,
-            Quaternion.identity
-        );
+        GameObject spawnedZombie =
+            Instantiate(
+                selectedZombie,
+                spawnPosition,
+                Quaternion.identity
+            );
 
-        spawnedZombies.Add(zombie);
-        ActiveZombieCount = spawnedZombies.Count;
+        ZombieFollow zombieFollow =
+            spawnedZombie.GetComponent<ZombieFollow>();
+
+        if (zombieFollow == null)
+        {
+            Debug.LogError(
+                spawnedZombie.name +
+                " does not have a ZombieFollow component."
+            );
+
+            Destroy(spawnedZombie);
+            return;
+        }
+
+        zombieFollow.SetTarget(player.transform);
+
+        spawnedZombies.Add(spawnedZombie);
+
+        ActiveZombieCount =
+            spawnedZombies.Count;
+
+        Debug.Log(
+            spawnedZombie.name +
+            " spawned and is following " +
+            player.name
+        );
     }
 
     private GameObject GetRandomZombiePrefab()

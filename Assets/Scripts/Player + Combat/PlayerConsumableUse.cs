@@ -5,15 +5,39 @@ public class PlayerConsumableUse : MonoBehaviour
 {
     [SerializeField] private HotbarManager hotbarManager;
     [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private FarmPlotInteraction farmPlotInteraction;
+
+    private void Awake()
+    {
+        if (farmPlotInteraction == null)
+        {
+            farmPlotInteraction =
+                GetComponent<FarmPlotInteraction>();
+        }
+    }
 
     public void OnUseItem(InputValue value)
     {
         if (!value.isPressed)
             return;
 
-        if (hotbarManager == null || playerHealth == null)
+        // Farm plots always own the interact location.
+        // This prevents food consumption on empty,
+        // planted, or mature farm plots.
+        if (farmPlotInteraction != null &&
+            farmPlotInteraction.IsStandingOnFarmPlot())
         {
-            Debug.LogError("Hotbar Manager or Player Health is not assigned.");
+            return;
+        }
+
+        if (hotbarManager == null ||
+            playerHealth == null)
+        {
+            Debug.LogError(
+                "Hotbar Manager or Player Health " +
+                "is not assigned."
+            );
+
             return;
         }
 

@@ -202,10 +202,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1758343820010033500, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: resourceManager
+      value: 
+      objectReference: {fileID: 1887658153}
+    - target: {fileID: 3224861405372686640, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: hotbarManager
+      value: 
+      objectReference: {fileID: 1528533930}
     - target: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4747878255050401793, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: hotbarManager
+      value: 
+      objectReference: {fileID: 1528533930}
+    - target: {fileID: 5198416402846158043, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: hotbarManager
+      value: 
+      objectReference: {fileID: 1528533930}
+    - target: {fileID: 6025052264207786324, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: hotbarManager
+      value: 
+      objectReference: {fileID: 1528533930}
     - target: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.16924
@@ -266,7 +286,9 @@ GameObject:
   m_Component:
   - component: {fileID: 162965984}
   - component: {fileID: 162965985}
-  m_Layer: 0
+  - component: {fileID: 162965986}
+  - component: {fileID: 162965987}
+  m_Layer: 7
   m_Name: Rock1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,6 +370,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &162965986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162965983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e033eef6c1c3941b570cd754555ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockResource
+  hitsRequired: 3
+  stoneDropPrefab: {fileID: 5569387913884282578, guid: 4e670d5c973ebe64bbb55d14d480d0ec, type: 3}
+  stoneDropAmount: 1
+  dropRadius: 0.25
+--- !u!61 &162965987
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162965983}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.75, y: 1.19}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.75, y: 1.19}
+  m_EdgeRadius: 0
 --- !u!1 &175232413
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +603,9 @@ GameObject:
   m_Component:
   - component: {fileID: 454517248}
   - component: {fileID: 454517249}
-  m_Layer: 0
+  - component: {fileID: 454517250}
+  - component: {fileID: 454517251}
+  m_Layer: 7
   m_Name: Iron (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,6 +687,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &454517250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454517247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e033eef6c1c3941b570cd754555ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockResource
+  hitsRequired: 3
+  stoneDropPrefab: {fileID: 8324832492298530509, guid: 50b51c996b9e4504cbc3d9925006c89f, type: 3}
+  stoneDropAmount: 1
+  dropRadius: 0.25
+--- !u!61 &454517251
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454517247}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.75, y: 1.19}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.75, y: 1.19}
+  m_EdgeRadius: 0
 --- !u!1 &483823035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,7 +1297,9 @@ GameObject:
   m_Component:
   - component: {fileID: 883943370}
   - component: {fileID: 883943371}
-  m_Layer: 0
+  - component: {fileID: 883943372}
+  - component: {fileID: 883943373}
+  m_Layer: 7
   m_Name: Iron (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1231,6 +1381,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &883943372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883943369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e033eef6c1c3941b570cd754555ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockResource
+  hitsRequired: 3
+  stoneDropPrefab: {fileID: 8324832492298530509, guid: 50b51c996b9e4504cbc3d9925006c89f, type: 3}
+  stoneDropAmount: 1
+  dropRadius: 0.25
+--- !u!61 &883943373
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883943369}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.75, y: 1.19}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.75, y: 1.19}
+  m_EdgeRadius: 0
 --- !u!1 &1039493661
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,6 +1722,103 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
+--- !u!1001 &1256941438
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633114081464476131, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078963773824940244, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+      propertyPath: m_Name
+      value: Canvas_HUD
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
 --- !u!1 &1348993324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,7 +1995,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1428810021}
   - component: {fileID: 1428810022}
-  m_Layer: 0
+  - component: {fileID: 1428810023}
+  - component: {fileID: 1428810024}
+  m_Layer: 7
   m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1768,6 +2079,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1428810023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428810020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e033eef6c1c3941b570cd754555ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockResource
+  hitsRequired: 3
+  stoneDropPrefab: {fileID: 5569387913884282578, guid: 4e670d5c973ebe64bbb55d14d480d0ec, type: 3}
+  stoneDropAmount: 1
+  dropRadius: 0.25
+--- !u!61 &1428810024
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428810020}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.75, y: 1.19}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.75, y: 1.19}
+  m_EdgeRadius: 0
 --- !u!1 &1436736069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,15 +2330,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieSpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 5968509786089811907, guid: 923b8d3d35001ad40a29281ad0b4ca0a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 923b8d3d35001ad40a29281ad0b4ca0a, type: 3}
+--- !u!114 &1528533930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2782070314600457238, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+  m_PrefabInstance: {fileID: 1256941438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e42d5f44d19d3459050e8358494f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HotbarManager
 --- !u!1 &1655350069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1976,7 +2356,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1655350070}
   - component: {fileID: 1655350071}
-  m_Layer: 0
+  - component: {fileID: 1655350072}
+  - component: {fileID: 1655350073}
+  m_Layer: 7
   m_Name: Iron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2058,6 +2440,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1655350072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655350069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e033eef6c1c3941b570cd754555ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockResource
+  hitsRequired: 3
+  stoneDropPrefab: {fileID: 8324832492298530509, guid: 50b51c996b9e4504cbc3d9925006c89f, type: 3}
+  stoneDropAmount: 1
+  dropRadius: 0.25
+--- !u!61 &1655350073
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655350069}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.75, y: 1.19}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.75, y: 1.19}
+  m_EdgeRadius: 0
 --- !u!1001 &1858575766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2119,6 +2563,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25ed479143c678946b764c41f9452602, type: 3}
+--- !u!114 &1887658153 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1306545129516667922, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+  m_PrefabInstance: {fileID: 1256941438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc16cf58e8623e4a9d6260932e06673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceItemManager
 --- !u!1 &1918611245
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,7 +2584,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1918611246}
   - component: {fileID: 1918611247}
-  m_Layer: 0
+  - component: {fileID: 1918611248}
+  - component: {fileID: 1918611249}
+  m_Layer: 7
   m_Name: Rock1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2211,6 +2668,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1918611248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918611245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e033eef6c1c3941b570cd754555ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockResource
+  hitsRequired: 3
+  stoneDropPrefab: {fileID: 5569387913884282578, guid: 4e670d5c973ebe64bbb55d14d480d0ec, type: 3}
+  stoneDropAmount: 1
+  dropRadius: 0.25
+--- !u!61 &1918611249
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918611245}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.75, y: 1.19}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.75, y: 1.19}
+  m_EdgeRadius: 0
 --- !u!1 &2021389775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,3 +2839,4 @@ SceneRoots:
   - {fileID: 1361653623}
   - {fileID: 1523555943}
   - {fileID: 1074743594}
+  - {fileID: 1256941438}

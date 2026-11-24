@@ -83,7 +83,7 @@ MonoBehaviour:
     minimumDay: 60
   maxZombies: 10
   dayNightCycle: {fileID: 8260398511881484745, guid: aaeb17204b45c734e9fce49fab8851b5, type: 3}
-  dayZombiesPerMinute: 2
-  nightZombiesPerMinute: 10
+  dayZombiesSpawnRate: 5
+  nightZombiesSpawnRate: 10
   distanceOutsideCamera: 1
   spawnCamera: {fileID: 1124170505438642611, guid: 30642eb336e551a45bebd3d6781e22f4, type: 3}
