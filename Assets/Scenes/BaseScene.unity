@@ -14583,6 +14583,10 @@ PrefabInstance:
       propertyPath: hotbarManager
       value: 
       objectReference: {fileID: 144913103}
+    - target: {fileID: 3224861405372686640, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: hotbarManager
+      value: 
+      objectReference: {fileID: 144913103}
     - target: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_Name
       value: Player
