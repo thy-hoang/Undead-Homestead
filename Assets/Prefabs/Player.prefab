@@ -50,7 +50,6 @@ GameObject:
   - component: {fileID: 5198416402846158043}
   - component: {fileID: 4747878255050401793}
   - component: {fileID: 6025052264207786324}
-  - component: {fileID: 328992672746680143}
   - component: {fileID: 1758343820010033500}
   m_Layer: 0
   m_Name: Player
@@ -253,7 +252,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
-  m_DefaultActionMap: df70fa95-8a34-4494-b137-73ab6b9c7d37
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1124170505438642611, guid: 30642eb336e551a45bebd3d6781e22f4, type: 3}
 --- !u!114 &3224861405372686640
@@ -325,7 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerConsumableUse
   hotbarManager: {fileID: 0}
   playerHealth: {fileID: 4893916264213330680}
-  farmPlotInteraction: {fileID: 0}
+  farmPlotInteraction: {fileID: 1758343820010033500}
 --- !u!114 &6025052264207786324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,24 +339,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath
   hotbarManager: {fileID: 0}
   labSceneName: LabScene
---- !u!114 &328992672746680143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3867200813987780921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfd16c3921513b344824a3bfb16b419b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerCure
-  hotbarManager: {fileID: 0}
-  cureRadius: 1.5
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  homeBaseSceneName: Base
 --- !u!114 &1758343820010033500
 MonoBehaviour:
   m_ObjectHideFlags: 0

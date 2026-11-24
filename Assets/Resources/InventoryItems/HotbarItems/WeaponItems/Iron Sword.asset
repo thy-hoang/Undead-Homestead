@@ -24,3 +24,4 @@ MonoBehaviour:
   attackSpeed: 2
   range: 0.5
   canChopTrees: 0
+  canMineRocks: 1

@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class SceneTransition : MonoBehaviour
@@ -9,7 +8,24 @@ public class SceneTransition : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneTransitionManager.Instance.LoadScene(sceneToLoad);
+            SceneTransitionManager.Instance.LoadScene(
+                sceneToLoad
+            );
+
+            return;
+        }
+
+        CuredZombieReturnHome curedZombie =
+            other.GetComponentInParent<CuredZombieReturnHome>();
+
+        if (curedZombie != null &&
+            curedZombie.IsReturningHome)
+        {
+            curedZombie.prepareForHomeBase();
+
+            SceneTransitionManager.Instance.LoadScene(
+                sceneToLoad
+            );
         }
     }
 }
