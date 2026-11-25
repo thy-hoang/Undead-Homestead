@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8134388150301345379}
   - component: {fileID: 4865877631728450466}
   - component: {fileID: 2759125365889494950}
-  m_Layer: 0
+  - component: {fileID: 4717001944983490390}
+  m_Layer: 7
   m_Name: TallTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1661449793
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 15
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8667466294985060184, guid: e0214f5b59be24675b169648c32997b4, type: 3}
@@ -139,3 +140,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.65, y: 1.35}
   m_EdgeRadius: 0
+--- !u!114 &4717001944983490390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838361345290717382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19506645b8d54a440b7ac030a4e1dd4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TreeResource
+  hitsRequired: 3
+  woodDropPrefab: {fileID: 5822797124958691672, guid: 7358b88708dcbe34c8de5736cceb678e, type: 3}
+  woodDropAmount: 1
+  dropRadius: 0.25

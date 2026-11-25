@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6214157303119138999}
   - component: {fileID: 2572109277672969325}
   - component: {fileID: 6274416023951309259}
-  m_Layer: 0
+  - component: {fileID: -7571128040650858918}
+  m_Layer: 7
   m_Name: ShortTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1661449793
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 15
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6783900630120892731, guid: a044745429a954c6c9dd1f40176b85ec, type: 3}
@@ -139,3 +140,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.14, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &-7571128040650858918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033965183665418536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19506645b8d54a440b7ac030a4e1dd4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TreeResource
+  hitsRequired: 3
+  woodDropPrefab: {fileID: 5822797124958691672, guid: 7358b88708dcbe34c8de5736cceb678e, type: 3}
+  woodDropAmount: 1
+  dropRadius: 0.25

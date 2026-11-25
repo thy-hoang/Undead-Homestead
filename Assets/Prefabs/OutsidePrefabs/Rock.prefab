@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7298255624879517627}
   - component: {fileID: 363886111598228615}
   - component: {fileID: 8730828754954931979}
-  m_Layer: 0
+  - component: {fileID: -2525668009894489067}
+  m_Layer: 7
   m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1661449793
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 14
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2182124076254010665, guid: 989d4fe1b046544dabf25efb3d772d57, type: 3}
@@ -123,7 +124,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -139,3 +140,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.75, y: 1.19}
   m_EdgeRadius: 0
+--- !u!114 &-2525668009894489067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920546499931845544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e033eef6c1c3941b570cd754555ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockResource
+  hitsRequired: 3
+  stoneDropPrefab: {fileID: 5569387913884282578, guid: 4e670d5c973ebe64bbb55d14d480d0ec, type: 3}
+  stoneDropAmount: 1
+  dropRadius: 0.25
