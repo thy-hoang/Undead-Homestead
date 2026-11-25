@@ -5198,6 +5198,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1670830325}
+    - targetCorrespondingSourceObject: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1670830335}
   m_SourcePrefab: {fileID: 100100000, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
 --- !u!4 &1670830302 stripped
 Transform:
@@ -5226,6 +5229,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ac54d474ce0f64a9d9242b11df162e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawner
+--- !u!95 &1670830335
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606810738}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0bf940dfa3fab4f2a8ddf2f82c8070cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1673552615
 GameObject:
   m_ObjectHideFlags: 0

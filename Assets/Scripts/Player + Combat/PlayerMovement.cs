@@ -3,13 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Sprite upSprite;
-    [SerializeField] private Sprite downSprite;
-    [SerializeField] private Sprite sideSprite;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackDistance = 0.7f;
     [SerializeField] private float moveSpeed = 4f;
 
+    private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Vector2 lastFacingDirection = Vector2.down;
     private Rigidbody2D rb;
@@ -18,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -28,37 +27,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        UpdateAnimations();
         if (movementInput == Vector2.zero)
             return;
-
-        if (Mathf.Abs(movementInput.y) > Mathf.Abs(movementInput.x))
-        {
-            if (movementInput.y > 0)
-            {
-                spriteRenderer.sprite = upSprite;
-                lastFacingDirection = Vector2.up;
-            }
-            else
-            {
-                spriteRenderer.sprite = downSprite;
-                lastFacingDirection = Vector2.down;
-            }
-        }
-        else
-        {
-            spriteRenderer.sprite = sideSprite;
-
-            if (movementInput.x > 0)
-            {
-                spriteRenderer.flipX = false;
-                lastFacingDirection = Vector2.right;
-            }
-            else
-            {
-                spriteRenderer.flipX = true;
-                lastFacingDirection = Vector2.left;
-            }
-        }
 
         attackPoint.localPosition = lastFacingDirection * attackDistance;
     }
@@ -66,5 +37,28 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocity = movementInput * moveSpeed;
+    }
+
+    void UpdateAnimations()
+    {
+        animator.SetBool("isWalkingUp", false);
+        animator.SetBool("isWalkingDown", false);
+        animator.SetBool("isWalkingSide", false);
+
+        if (movementInput == Vector2.zero) return;
+
+        if (movementInput.y > 0)
+        {
+            animator.SetBool("isWalkingUp", true);
+        }
+        else if (movementInput.y < 0)
+        {
+            animator.SetBool("isWalkingDown", true);
+        }
+        else if (movementInput.x != 0)
+        {
+            animator.SetBool("isWalkingSide", true);
+            spriteRenderer.flipX = movementInput.x < 0;
+        }
     }
 }
