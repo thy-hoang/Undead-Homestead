@@ -20,33 +20,6 @@ public class TreeRockPlacer : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            // Match the Z-coordinate to the tilemap's plane (important for 2D orthographic cameras)
-            mouseWorldPos.z = tilemap.transform.position.z;
-
-            Vector3Int cellPos = tilemap.WorldToCell(mouseWorldPos);
-            TileBase clickedTile = tilemap.GetTile(cellPos);
-
-            if (clickedTile != null)
-            {
-                Debug.Log($"Clicked tile: {clickedTile.name} at {cellPos}");
-                Vector3 spawnPosition = tilemap.GetCellCenterWorld(cellPos);
-                Quaternion spawnRotation = Quaternion.identity;
-
-                if (IsGrassTile(clickedTile))
-                {
-                    GameObject newObj = Instantiate(shortTreePrefab, spawnPosition, spawnRotation, transform);
-                }
-            }
-        }
-    }
-
     bool IsGrassTile(TileBase tile)
     {
         // check if the tile name ends in "1_10", "1_15", or "1_16"

@@ -9,7 +9,7 @@ public class ZombieHealth : MonoBehaviour
 
     [SerializeField] private ParticleSystem hitParticleEffect;
 
-    [SerializeField] private float knockbackForce = 7f;
+    [SerializeField] private float knockbackForce = 20f;
     [SerializeField] private float knockbackDuration = 0.34f;
 
     [SerializeField] private AudioSource audioSource;
@@ -72,6 +72,11 @@ public class ZombieHealth : MonoBehaviour
 
     private void Die()
     {
+        Debug.Log(
+            gameObject.name +
+            " died. Destroying zombie."
+        );
+
         ZombieDropTable dropTable =
             GetComponentInParent<ZombieDropTable>();
 
@@ -79,15 +84,6 @@ public class ZombieHealth : MonoBehaviour
         {
             dropTable.DropLoot(transform.position);
         }
-        else
-        {
-            Debug.LogError(
-                "ZombieDropTable was not found on " +
-                gameObject.name
-            );
-        }
-
-        StatisticsManager.Instance.Increment("ZombiesKilled", 1);
 
         Destroy(gameObject);
     }
