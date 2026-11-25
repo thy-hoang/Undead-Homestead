@@ -748,69 +748,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1385249224899217776, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 1385249224899217776, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 4471418915177272523, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471418915177272523, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471418915177272523, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4471418915177272523, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786220009095859145, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786220009095859145, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786220009095859145, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786220009095859145, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4929264891825568967, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 4929264891825568967, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 5590545981729508245, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
       propertyPath: m_Name
       value: Canvas_DayTime
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612583133667048177, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612583133667048177, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612583133667048177, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14774,6 +14714,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 328992672746680143, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: hotbarManager
+      value: 
+      objectReference: {fileID: 144913103}
     - target: {fileID: 1758343820010033500, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: detectionRadius
       value: 0.4
@@ -14786,10 +14730,6 @@ PrefabInstance:
       propertyPath: m_DefaultActionMap
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 328992672746680143, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
-      propertyPath: hotbarManager
-      value: 
-      objectReference: {fileID: 144913103}
     - target: {fileID: 3224861405372686640, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: hotbarManager
       value: 
