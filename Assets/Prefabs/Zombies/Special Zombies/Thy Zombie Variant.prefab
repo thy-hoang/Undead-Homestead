@@ -24,10 +24,22 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1909876918032228475, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909876918032228475, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.63
+      objectReference: {fileID: 0}
     - target: {fileID: 5385694810334930659, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
       propertyPath: m_Name
       value: Thy Zombie Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7562724983382285771, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5771508198828344334, guid: b01b7b4706d4d49c9b57f42c687f1050, type: 3}
     - target: {fileID: 9059581613585617086, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.27487

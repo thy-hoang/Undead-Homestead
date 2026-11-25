@@ -20,10 +20,22 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1909876918032228475, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909876918032228475, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.77
+      objectReference: {fileID: 0}
     - target: {fileID: 5385694810334930659, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
       propertyPath: m_Name
       value: Zoey Zombie Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7562724983382285771, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3704167401045127729, guid: 0bc39678ca1774daca093d78966da7b7, type: 3}
     - target: {fileID: 9059581613585617086, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.27487

@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 623568643150989724, guid: 4b877de001d3ebf4f8a118fa92038dc6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 623568643150989724, guid: 4b877de001d3ebf4f8a118fa92038dc6, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.56
+      objectReference: {fileID: 0}
     - target: {fileID: 1427704366838896833, guid: 4b877de001d3ebf4f8a118fa92038dc6, type: 3}
       propertyPath: maxHealth
       value: 500
@@ -68,6 +76,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8850225127928378412, guid: 4b877de001d3ebf4f8a118fa92038dc6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3858659070479772866, guid: 1d7667c8b44154e1893a3b8fedfcff08, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
