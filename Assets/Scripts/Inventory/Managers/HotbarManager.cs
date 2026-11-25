@@ -84,7 +84,6 @@ public class HotbarManager : MonoBehaviour
         }
 
         var item = hotbarItems[slotIndex];
-        Debug.Log($"HotbarManager: Item in slot {slotIndex} is {item?.itemName ?? "None"}");
         return item;
     }
 

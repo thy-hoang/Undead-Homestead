@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7298255624879517627}
   - component: {fileID: 363886111598228615}
-  - component: {fileID: 4400870155395652750}
-  - component: {fileID: 8386364238298417511}
-  - component: {fileID: 7932211692431979861}
+  - component: {fileID: 8730828754954931979}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -80,9 +78,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1451872081
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 14
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2182124076254010665, guid: 989d4fe1b046544dabf25efb3d772d57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,50 +93,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 1
   m_BlendShapeWeights: []
---- !u!114 &4400870155395652750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6920546499931845544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e033eef6c1c3941b570cd754555ab4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RockResource
-  hitsRequired: 3
-  stoneDropPrefab: {fileID: 5569387913884282578, guid: 4e670d5c973ebe64bbb55d14d480d0ec, type: 3}
-  stoneDropAmount: 1
-  dropRadius: 0.25
---- !u!50 &8386364238298417511
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6920546499931845544}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &7932211692431979861
+--- !u!61 &8730828754954931979
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,15 +127,15 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.011999369, y: -0.032827556}
+  m_Offset: {x: 0, y: 0.595}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.3}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.75, y: 1.19}
     newSize: {x: 1.75, y: 1.19}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.596271, y: 0.5953245}
+  m_Size: {x: 1.75, y: 1.19}
   m_EdgeRadius: 0
