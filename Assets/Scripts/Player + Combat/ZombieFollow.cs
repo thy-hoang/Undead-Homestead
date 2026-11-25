@@ -7,7 +7,9 @@ public class ZombieFollow : MonoBehaviour
     [SerializeField] private float moveSpeed = 1.5f;
     [SerializeField] private float stoppingDistance = 1f;
 
+    private Animator animator;
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     public bool IsKnockedBack { get; set; }
 
@@ -42,6 +44,8 @@ public class ZombieFollow : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (target == null)
         {
@@ -67,6 +71,15 @@ public class ZombieFollow : MonoBehaviour
                 gameObject.name
             );
         }
+    }
+
+    private void Update()
+    {
+        
+        if (target == null) return;
+        Vector2 direction = (target.position - transform.position).normalized;
+
+        UpdateAnimations(direction);
     }
 
     private void FixedUpdate()
@@ -105,5 +118,29 @@ public class ZombieFollow : MonoBehaviour
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
+    }
+
+    void UpdateAnimations(Vector2 direction)
+    {
+        // Reset all
+        animator.SetBool("isWalkingUp", false);
+        animator.SetBool("isWalkingDown", false);
+        animator.SetBool("isWalkingSide", false);
+
+        if (direction == Vector2.zero) return;
+
+        // Use whichever axis is dominant
+        if (Mathf.Abs(direction.y) >= Mathf.Abs(direction.x))
+        {
+            if (direction.y > 0)
+                animator.SetBool("isWalkingUp", true);
+            else
+                animator.SetBool("isWalkingDown", true);
+        }
+        else
+        {
+            animator.SetBool("isWalkingSide", true);
+            spriteRenderer.flipX = direction.x < 0;
+        }
     }
 }

@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 825683614420756427}
   - component: {fileID: 8360287543839230948}
   - component: {fileID: 6149507617325176411}
+  - component: {fileID: 4068207245010350042}
+  - component: {fileID: 4984519450593480532}
   m_Layer: 6
   m_Name: Easy Zombie
   m_TagString: Untagged
@@ -86,8 +88,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1451872081
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5782521184205631276, guid: 17418b2c23c72493194eb86d0ec1bbf0, type: 3}
@@ -390,3 +392,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4068207245010350042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384897512951287556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce3215179e8a97648913e75ab57a23cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CuredZombieReturnHome
+  moveSpeed: 2
+  arrivalDistance: 0.1
+  homeExitTag: HomeBaseExit
+  baseSpawnID: BaseExitSpawn
+  homeBasePointTag: HomeBasePoint
+--- !u!95 &4984519450593480532
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384897512951287556}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 70d07e075657e4f8c995f80053fb1b34, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
