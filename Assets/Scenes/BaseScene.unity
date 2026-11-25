@@ -181,6 +181,37 @@ MonoBehaviour:
   gridWidth: 18
   gridHeight: 12
   bottomLeftCell: {x: -9, y: -6, z: 0}
+--- !u!1 &28029321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 28029322}
+  m_Layer: 0
+  m_Name: LabExitSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &28029322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28029321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.74, y: 3.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43018861
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +528,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.016229153, y: 1.4}
   m_EdgeRadius: 0
+--- !u!114 &144913103 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2782070314600457238, guid: f4b67ae8fd8558641a690288955506bf, type: 3}
+  m_PrefabInstance: {fileID: 1325092270}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e42d5f44d19d3459050e8358494f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HotbarManager
 --- !u!1 &215586738
 GameObject:
   m_ObjectHideFlags: 0
@@ -3866,6 +3908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: ZombieScene
+  targetSpawnName: BaseEntranceSpawn
 --- !u!61 &520246875
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14668,10 +14711,26 @@ PrefabInstance:
       propertyPath: m_DefaultActionMap
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 328992672746680143, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: hotbarManager
+      value: 
+      objectReference: {fileID: 144913103}
+    - target: {fileID: 3224861405372686640, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: hotbarManager
+      value: 
+      objectReference: {fileID: 144913103}
     - target: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4747878255050401793, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: hotbarManager
+      value: 
+      objectReference: {fileID: 144913103}
+    - target: {fileID: 5198416402846158043, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: hotbarManager
+      value: 
+      objectReference: {fileID: 144913103}
     - target: {fileID: 5233469451217212032, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -14692,6 +14751,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6025052264207786324, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      propertyPath: hotbarManager
+      value: 
+      objectReference: {fileID: 144913103}
     - target: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0254
@@ -14763,7 +14826,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1388454181}
   m_SourcePrefab: {fileID: 100100000, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
 --- !u!20 &1254457536 stripped
 Camera:
@@ -14785,6 +14851,10 @@ PrefabInstance:
     - target: {fileID: 5394625530372057118, guid: aee5101bb0526e447a8dfeb834125522, type: 3}
       propertyPath: sceneToLoad
       value: LabScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394625530372057118, guid: aee5101bb0526e447a8dfeb834125522, type: 3}
+      propertyPath: targetSpawnName
+      value: LabEntranceSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 7080584809302073196, guid: aee5101bb0526e447a8dfeb834125522, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15409,6 +15479,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
   m_PrefabInstance: {fileID: 1192582282}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1388454181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388454167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ac54d474ce0f64a9d9242b11df162e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawner
 --- !u!1 &1410730476
 GameObject:
   m_ObjectHideFlags: 0
@@ -16394,6 +16476,37 @@ Transform:
   - {fileID: 1650623174}
   m_Father: {fileID: 2004929175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1987294862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1987294863}
+  m_Layer: 0
+  m_Name: BaseExitSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1987294863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987294862}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.97, y: 6.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1990722974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8551909347705345605, guid: 33a1b17949d7c674b9629b0b903864c4, type: 3}
@@ -17366,3 +17479,5 @@ SceneRoots:
   - {fileID: 520246876}
   - {fileID: 295655528}
   - {fileID: 414076672}
+  - {fileID: 28029322}
+  - {fileID: 1987294863}

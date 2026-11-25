@@ -11,7 +11,7 @@ public class PlayerCure : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
 
     [Header("Scene Settings")]
-    [SerializeField] private string homeBaseSceneName = "HomeBase";
+    [SerializeField] private string homeBaseSceneName = "BaseScene";
 
     public void OnCure(InputValue value)
     {
