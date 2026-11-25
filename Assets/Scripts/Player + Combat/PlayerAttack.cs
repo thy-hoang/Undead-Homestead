@@ -79,6 +79,27 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
+        if (weapon.canMineRocks)
+        {
+            Collider2D[] rocksHit =
+                Physics2D.OverlapCircleAll(
+                    attackPoint.position,
+                    finalRadius,
+                    harvestableLayer
+                );
+
+            foreach (Collider2D rockCollider in rocksHit)
+            {
+                RockResource rock =
+                    rockCollider.GetComponentInParent<RockResource>();
+
+                if (rock != null)
+                {
+                    rock.HitWithPickaxe();
+                }
+            }
+        }
+
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
             attackPoint.position,
             finalRadius,
@@ -87,7 +108,7 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (Collider2D enemy in enemiesHit)
         {
-            ZombieHealth health = enemy.GetComponent<ZombieHealth>();
+            ZombieHealth health = enemy.GetComponentInParent<ZombieHealth>();
 
             if (health != null)
             {
