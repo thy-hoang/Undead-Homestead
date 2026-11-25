@@ -616,8 +616,6 @@ GameObject:
   m_Component:
   - component: {fileID: 454517248}
   - component: {fileID: 454517249}
-  - component: {fileID: 454517250}
-  - component: {fileID: 454517251}
   m_Layer: 7
   m_Name: Iron (1)
   m_TagString: Untagged
@@ -2248,6 +2246,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1428810023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428810020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e033eef6c1c3941b570cd754555ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockResource
+  hitsRequired: 3
+  stoneDropPrefab: {fileID: 5569387913884282578, guid: 4e670d5c973ebe64bbb55d14d480d0ec, type: 3}
+  stoneDropAmount: 1
+  dropRadius: 0.25
+--- !u!61 &1428810024
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428810020}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.75, y: 1.19}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.75, y: 1.19}
+  m_EdgeRadius: 0
 --- !u!1001 &1523555943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2464,8 +2524,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1655350070}
   - component: {fileID: 1655350071}
-  - component: {fileID: 1655350072}
   - component: {fileID: 1655350073}
+  - component: {fileID: 1655350072}
   m_Layer: 7
   m_Name: Iron
   m_TagString: Untagged
@@ -2548,6 +2608,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!61 &1655350072
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655350069}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.75, y: 1.19}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.75, y: 1.19}
+  m_EdgeRadius: 0
+--- !u!114 &1655350073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655350069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e033eef6c1c3941b570cd754555ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockResource
+  hitsRequired: 3
+  stoneDropPrefab: {fileID: 8324832492298530509, guid: 50b51c996b9e4504cbc3d9925006c89f, type: 3}
+  stoneDropAmount: 1
+  dropRadius: 0.25
 --- !u!114 &1811173169 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1385249224899217776, guid: e0eff94894ce5c54d9802327aa8309b3, type: 3}
