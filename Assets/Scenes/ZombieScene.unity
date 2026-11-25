@@ -9241,7 +9241,7 @@ PrefabInstance:
       addedObject: {fileID: 1868068583}
     - targetCorrespondingSourceObject: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1868068584}
+      addedObject: {fileID: 1868068595}
   m_SourcePrefab: {fileID: 100100000, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
 --- !u!1 &1868068582 stripped
 GameObject:
@@ -9260,7 +9260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ac54d474ce0f64a9d9242b11df162e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawner
---- !u!95 &1868068584
+--- !u!95 &1868068595
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
