@@ -36,7 +36,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = movementInput * moveSpeed;
+        rb.MovePosition(
+            rb.position +
+            movementInput * moveSpeed * Time.fixedDeltaTime
+        );
     }
 
     void UpdateAnimations()
