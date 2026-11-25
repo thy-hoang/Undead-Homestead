@@ -7,31 +7,9 @@ public class ZombieFollow : MonoBehaviour
     [SerializeField] private float moveSpeed = 1.5f;
     [SerializeField] private float stoppingDistance = 1f;
 
-    [Header("Knockback Settings")]
-    [SerializeField] private float knockbackRecoveryTime = 0.34f;
-
     private Rigidbody2D rb;
-    private float knockbackEndTime;
 
-    public bool IsKnockedBack
-    {
-        get
-        {
-            return Time.time < knockbackEndTime;
-        }
-        set
-        {
-            if (value)
-            {
-                knockbackEndTime =
-                    Time.time + knockbackRecoveryTime;
-            }
-            else
-            {
-                knockbackEndTime = 0f;
-            }
-        }
-    }
+    public bool IsKnockedBack { get; set; }
 
     private void Start()
     {
@@ -93,7 +71,7 @@ public class ZombieFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (target == null)
+        if (target == null || IsKnockedBack)
             return;
 
         Vector2 currentPosition = rb.position;

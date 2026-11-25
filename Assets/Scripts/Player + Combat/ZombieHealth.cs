@@ -85,6 +85,8 @@ public class ZombieHealth : MonoBehaviour
             dropTable.DropLoot(transform.position);
         }
 
+        StatisticsManager.Instance.Increment("ZombiesKilled", 1);
+
         Destroy(gameObject);
     }
 
@@ -94,7 +96,7 @@ public class ZombieHealth : MonoBehaviour
     {
         if (zombieFollow != null)
             zombieFollow.IsKnockedBack = true;
-
+        
         float elapsedTime = 0f;
         Vector2 initialVelocity = direction * knockbackForce;
 
