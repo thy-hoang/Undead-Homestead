@@ -835,7 +835,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: ZombieScene
   destinationSpawnID: OutsideExitSpawn
-  ignorePlayerAlreadyInside: 1
+  ignorePlayerAtSpawn: 1
+  spawnIgnoreDistance: 0.3
 --- !u!114 &490519398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2317,8 +2318,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: ZombieScene
-  destinationSpawnID: 
-  ignorePlayerAlreadyInside: 1
+  destinationSpawnID: OutsideExitSpawn
+  ignorePlayerAtSpawn: 1
+  spawnIgnoreDistance: 0.3
 --- !u!1 &1428810020
 GameObject:
   m_ObjectHideFlags: 0
