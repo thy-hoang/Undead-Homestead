@@ -7,10 +7,15 @@ public class CuredZombieReturnHome : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float arrivalDistance = 0.1f;
 
-    [Header("Scene Tags")]
-    [SerializeField] private string homeExitTag = "HomeBaseExit";
-    [SerializeField] private string baseExitSpawnTag = "BaseExitSpawn";
-    [SerializeField] private string homeBasePointTag = "HomeBasePoint";
+    [Header("Scene Settings")]
+    [SerializeField] private string homeExitTag =
+        "HomeBaseExit";
+
+    [SerializeField] private string baseSpawnID =
+        "BaseEntrance";
+
+    [SerializeField] private string homeBasePointTag =
+        "HomeBasePoint";
 
     private Rigidbody2D rb;
 
@@ -40,18 +45,28 @@ public class CuredZombieReturnHome : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        ZombieFollow follow = GetComponent<ZombieFollow>();
+        ZombieFollow follow =
+            GetComponent<ZombieFollow>();
+
         if (follow != null)
+        {
             follow.enabled = false;
+        }
 
-        ZombieAttack attack = GetComponent<ZombieAttack>();
+        ZombieAttack attack =
+            GetComponent<ZombieAttack>();
+
         if (attack != null)
+        {
             attack.enabled = false;
+        }
 
-        GameObject exit =
-            GameObject.FindGameObjectWithTag(homeExitTag);
+        GameObject homeExit =
+            GameObject.FindGameObjectWithTag(
+                homeExitTag
+            );
 
-        if (exit == null)
+        if (homeExit == null)
         {
             Debug.LogError(
                 "No object tagged " +
@@ -59,26 +74,29 @@ public class CuredZombieReturnHome : MonoBehaviour
                 " was found."
             );
 
+            returningHome = false;
             return;
         }
 
-        exitTarget = exit.transform;
+        exitTarget = homeExit.transform;
 
         Debug.Log(
             gameObject.name +
-            " is walking toward the home-base entrance."
+            " is returning to the home base."
         );
     }
 
     private void FixedUpdate()
     {
-        if (returningHome && exitTarget != null)
+        if (returningHome &&
+            exitTarget != null)
         {
             MoveToward(exitTarget);
             return;
         }
 
-        if (walkingToHomeBase && homeBaseTarget != null)
+        if (walkingToHomeBase &&
+            homeBaseTarget != null)
         {
             MoveToward(homeBaseTarget);
 
@@ -108,14 +126,19 @@ public class CuredZombieReturnHome : MonoBehaviour
 
     private void MoveToward(Transform target)
     {
-        Vector2 currentPosition = transform.position;
-        Vector2 targetPosition = target.position;
+        Vector2 currentPosition =
+            transform.position;
 
-        Vector2 newPosition = Vector2.MoveTowards(
-            currentPosition,
-            targetPosition,
-            moveSpeed * Time.fixedDeltaTime
-        );
+        Vector2 targetPosition =
+            target.position;
+
+        Vector2 newPosition =
+            Vector2.MoveTowards(
+                currentPosition,
+                targetPosition,
+                moveSpeed *
+                Time.fixedDeltaTime
+            );
 
         if (rb != null)
         {
@@ -134,7 +157,8 @@ public class CuredZombieReturnHome : MonoBehaviour
 
         waitingForHomeScene = true;
 
-        SceneManager.sceneLoaded += placeAtHomeBase;
+        SceneManager.sceneLoaded +=
+            placeAtHomeBase;
     }
 
     private void placeAtHomeBase(
@@ -142,37 +166,55 @@ public class CuredZombieReturnHome : MonoBehaviour
         LoadSceneMode mode
     )
     {
-        SceneManager.sceneLoaded -= placeAtHomeBase;
+        SceneManager.sceneLoaded -=
+            placeAtHomeBase;
 
         waitingForHomeScene = false;
 
-        GameObject spawnPoint =
-            GameObject.FindGameObjectWithTag(
-                baseExitSpawnTag
+        SceneSpawnPoint[] spawnPoints =
+            FindObjectsByType<SceneSpawnPoint>(
+                FindObjectsSortMode.None
             );
+
+        SceneSpawnPoint matchingSpawn =
+            null;
+
+        foreach (
+            SceneSpawnPoint spawnPoint
+            in spawnPoints
+        )
+        {
+            if (spawnPoint.SpawnID == baseSpawnID)
+            {
+                matchingSpawn = spawnPoint;
+                break;
+            }
+        }
+
+        if (matchingSpawn == null)
+        {
+            Debug.LogError(
+                "No SceneSpawnPoint with ID '" +
+                baseSpawnID +
+                "' was found in " +
+                scene.name
+            );
+
+            return;
+        }
 
         GameObject homePoint =
             GameObject.FindGameObjectWithTag(
                 homeBasePointTag
             );
 
-        if (spawnPoint == null)
-        {
-            Debug.LogError(
-                "No object tagged " +
-                baseExitSpawnTag +
-                " was found in BaseScene."
-            );
-
-            return;
-        }
-
         if (homePoint == null)
         {
             Debug.LogError(
                 "No object tagged " +
                 homeBasePointTag +
-                " was found in BaseScene."
+                " was found in " +
+                scene.name
             );
 
             return;
@@ -184,7 +226,7 @@ public class CuredZombieReturnHome : MonoBehaviour
         );
 
         Vector3 spawnPosition =
-            spawnPoint.transform.position;
+            matchingSpawn.transform.position;
 
         transform.position = spawnPosition;
 
@@ -195,20 +237,23 @@ public class CuredZombieReturnHome : MonoBehaviour
             rb.angularVelocity = 0f;
         }
 
-        homeBaseTarget = homePoint.transform;
+        homeBaseTarget =
+            homePoint.transform;
 
         returningHome = false;
         walkingToHomeBase = true;
 
         Debug.Log(
             gameObject.name +
-            " spawned at BaseExitSpawn and is walking to " +
-            homeBaseTarget.position
+            " spawned at " +
+            baseSpawnID +
+            " and is walking to HomeBasePoint."
         );
     }
 
     private void OnDestroy()
     {
-        SceneManager.sceneLoaded -= placeAtHomeBase;
+        SceneManager.sceneLoaded -=
+            placeAtHomeBase;
     }
 }

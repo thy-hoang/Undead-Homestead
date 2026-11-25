@@ -6,8 +6,7 @@ TagManager:
   tags:
   - HomeBasePoint
   - BedPoint
-  - EntranceToBase
-  - BaseExitSpawn
+  - HomeBaseExit
   layers:
   - Default
   - TransparentFX

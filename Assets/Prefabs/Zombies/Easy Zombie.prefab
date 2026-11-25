@@ -403,5 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CuredZombieReturnHome
   moveSpeed: 2
-  homeExitTag: EntranceToBase
+  arrivalDistance: 0.1
+  homeExitTag: HomeBaseExit
+  baseSpawnID: BaseExitSpawn
   homeBasePointTag: HomeBasePoint
