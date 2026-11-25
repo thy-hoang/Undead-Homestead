@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6348c0cda2214408b519f1327d57aa, type: 3}
+  m_Name: Craft3IronWeapons
+  m_EditorClassIdentifier: Assembly-CSharp::Objective
+  objectiveID: craft_3_iron_weapons
+  objectiveName: Craft 3 Iron Weapons
+  description: 
+  parent: {fileID: 0}
+  statistic: IronWeaponCrafted
+  targetAmount: 3
