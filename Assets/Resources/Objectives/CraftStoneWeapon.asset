@@ -15,6 +15,6 @@ MonoBehaviour:
   objectiveID: craft_stone_weapon
   objectiveName: Craft A Stone Weapon
   description: 
-  parent: {fileID: 0}
+  parent: {fileID: 11400000, guid: dd3334aaed1f75440a84c36bed2d0f44, type: 2}
   statistic: StoneWeaponCrafted
   targetAmount: 1

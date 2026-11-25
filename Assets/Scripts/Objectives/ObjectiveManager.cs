@@ -5,6 +5,7 @@ using System.Linq;
 
 public class ObjectiveManager : MonoBehaviour
 {
+    public static ObjectiveManager Instance { get; private set; }
     [SerializeField] private StatisticsManager statisticsManager;
     private List<Objective> allObjectives;
 
@@ -13,10 +14,22 @@ public class ObjectiveManager : MonoBehaviour
 
     public event Action<ObjectiveInstance> OnObjectiveUpdated;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        InitializeObjectives();
+    }
+
     private void Start()
     {
-        InitializeObjectives();
-
         statisticsManager.OnStatisticChanged += OnStatisticChanged;
     }
 
@@ -149,6 +162,13 @@ public class ObjectiveManager : MonoBehaviour
     public ObjectiveInstance GetObjective(Objective objective)
     {
         return objectiveInstances.GetValueOrDefault(objective);
+    }
+
+    public ObjectiveInstance GetObjective(string objectiveID)
+    {
+        return objectiveInstances.Values.FirstOrDefault(
+            x => x.objective.objectiveID == objectiveID
+        );
     }
 
     public List<ObjectiveInstance> GetActiveObjectives()
