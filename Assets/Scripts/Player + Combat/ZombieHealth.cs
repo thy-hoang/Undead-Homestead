@@ -14,6 +14,9 @@ public class ZombieHealth : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip onHitSound;
+    [SerializeField] private AudioClip onDeathSound;
+
+    [SerializeField] private GameObject damageIndicatorPrefab;
 
     private ZombieFollow zombieFollow;
 
@@ -47,15 +50,17 @@ public class ZombieHealth : MonoBehaviour
 
         Debug.Log("Zombie health: " + currentHealth);
 
-        onHitEffects();
-
         if (currentHealth <= 0)
         {
             Die();
         }
+
+        onHitEffects(damage);
+
+        
     }
 
-    public void onHitEffects()
+    public void onHitEffects(int damage)
     {
         flashEffect.Flash();
         if (hitParticleEffect != null)
@@ -64,10 +69,21 @@ public class ZombieHealth : MonoBehaviour
         }
 
         // Sound effect
-        if (audioSource != null && onHitSound != null)
+        if (audioSource != null && onHitSound != null && currentHealth > 0)
         {
             audioSource.PlayOneShot(onHitSound);
         }
+
+        // Spawn damage indicator
+        Vector3 spawnPosition = transform.position + Vector3.up;
+
+        GameObject indicator = Instantiate(
+            damageIndicatorPrefab,
+            spawnPosition,
+            Quaternion.identity
+        );
+
+        indicator.GetComponent<DamageIndicator>().SetDamage(damage);
     }
 
     private void Die()
@@ -86,6 +102,15 @@ public class ZombieHealth : MonoBehaviour
         }
 
         StatisticsManager.Instance.Increment("ZombiesKilled", 1);
+
+        // Sound effect
+        if (audioSource != null && onDeathSound != null)
+        {
+            AudioSource.PlayClipAtPoint(
+                onDeathSound,
+                transform.position
+            );
+        }
 
         Destroy(gameObject);
     }

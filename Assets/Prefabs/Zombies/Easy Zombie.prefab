@@ -194,6 +194,8 @@ MonoBehaviour:
   knockbackDuration: 0.34
   audioSource: {fileID: 6149507617325176411}
   onHitSound: {fileID: 8300000, guid: 63c0274b539f66142b1f0392c2a9a154, type: 3}
+  onDeathSound: {fileID: 8300000, guid: 4a80717bb49bafd48b9b2c51ddd6baf8, type: 3}
+  damageIndicatorPrefab: {fileID: 4337028460479086528, guid: 5036a096f86c4de4096ca30ee61443ba, type: 3}
 --- !u!114 &2057204262430450930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +211,6 @@ MonoBehaviour:
   target: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
   moveSpeed: 1.5
   stoppingDistance: 1
-  knockbackRecoveryTime: 0.34
 --- !u!114 &2204618290488267109
 MonoBehaviour:
   m_ObjectHideFlags: 0
