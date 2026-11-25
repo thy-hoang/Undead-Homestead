@@ -9402,6 +9402,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1868068595}
+    - targetCorrespondingSourceObject: {fileID: 3867200813987780921, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1868068608}
   m_SourcePrefab: {fileID: 100100000, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
 --- !u!1 &1868068582 stripped
 GameObject:
@@ -9442,6 +9445,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1868068608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868068582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91cc2448f626c7444982a069aa5f284c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleFlash
+  flashMaterial: {fileID: 2100000, guid: affddab9e395d2f44bc645763307eeda, type: 2}
+  duration: 0.125
 --- !u!1001 &280062917064599792
 PrefabInstance:
   m_ObjectHideFlags: 0
