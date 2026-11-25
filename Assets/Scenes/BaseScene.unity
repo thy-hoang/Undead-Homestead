@@ -229,6 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: LabScene
   destinationSpawnID: LabEntranceSpawn
+  ignorePlayerAtSpawn: 1
+  spawnIgnoreDistance: 0.3
 --- !u!114 &28029324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3968,7 +3970,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: ZombieScene
-  destinationSpawnID: 
+  destinationSpawnID: BaseEntranceSpawn
+  ignorePlayerAtSpawn: 1
+  spawnIgnoreDistance: 0.3
 --- !u!61 &520246875
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15134,6 +15138,10 @@ PrefabInstance:
       propertyPath: targetSpawnName
       value: LabEntranceSpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 5394625530372057118, guid: aee5101bb0526e447a8dfeb834125522, type: 3}
+      propertyPath: destinationSpawnID
+      value: LabEntranceSpawn
+      objectReference: {fileID: 0}
     - target: {fileID: 7080584809302073196, guid: aee5101bb0526e447a8dfeb834125522, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.41
@@ -16816,6 +16824,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: ZombieScene
   destinationSpawnID: BaseEntranceSpawn
+  ignorePlayerAtSpawn: 1
+  spawnIgnoreDistance: 0.3
 --- !u!114 &1987294865
 MonoBehaviour:
   m_ObjectHideFlags: 0

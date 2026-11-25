@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 490519397}
   m_Layer: 0
   m_Name: CaveEntranceSpawn
-  m_TagString: Untagged
+  m_TagString: HomeBaseExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -835,6 +835,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: ZombieScene
   destinationSpawnID: OutsideExitSpawn
+  ignorePlayerAtSpawn: 1
+  spawnIgnoreDistance: 0.3
 --- !u!114 &490519398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2316,7 +2318,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: ZombieScene
-  destinationSpawnID: 
+  destinationSpawnID: OutsideExitSpawn
+  ignorePlayerAtSpawn: 1
+  spawnIgnoreDistance: 0.3
 --- !u!1 &1428810020
 GameObject:
   m_ObjectHideFlags: 0

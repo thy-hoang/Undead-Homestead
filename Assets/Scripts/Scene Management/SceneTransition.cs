@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class SceneTransition : MonoBehaviour
@@ -8,48 +7,28 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] private string destinationSpawnID;
 
     [Header("Trigger Settings")]
-    [SerializeField] private bool ignorePlayerAlreadyInside = true;
+    [SerializeField] private bool ignorePlayerAtSpawn = true;
+    [SerializeField] private float spawnIgnoreDistance = 0.3f;
 
-    private bool initialized;
-    private bool ignoreCurrentOccupant;
     private bool transitionStarted;
-
-    private Collider2D triggerCollider;
-
-    private IEnumerator Start()
-    {
-        triggerCollider =
-            GetComponent<Collider2D>();
-
-        // Wait for the Player to be placed at the spawn point.
-        yield return new WaitForFixedUpdate();
-
-        if (ignorePlayerAlreadyInside)
-        {
-            ignoreCurrentOccupant =
-                PlayerOrReturningZombieIsInside();
-        }
-
-        initialized = true;
-    }
 
     private void OnTriggerEnter2D(
         Collider2D other
     )
     {
-        if (!initialized)
-            return;
-
         if (transitionStarted)
             return;
+
+        Transform enteringRoot =
+            other.transform.root;
+
+        bool isPlayer =
+            enteringRoot.CompareTag("Player");
 
         CuredZombieReturnHome zombie =
             other.GetComponentInParent<
                 CuredZombieReturnHome
             >();
-
-        bool isPlayer =
-            other.transform.root.CompareTag("Player");
 
         bool isReturningZombie =
             zombie != null &&
@@ -58,15 +37,16 @@ public class SceneTransition : MonoBehaviour
         if (!isPlayer && !isReturningZombie)
             return;
 
-        // Ignore only the object already standing inside
-        // the trigger after scene loading.
-        if (ignoreCurrentOccupant)
+        // Ignore only the Player being placed directly
+        // on this object's spawn point.
+        if (isPlayer &&
+            ignorePlayerAtSpawn &&
+            PlayerIsAtThisSpawnPoint(enteringRoot))
         {
-            ignoreCurrentOccupant = false;
-
             Debug.Log(
                 gameObject.name +
-                " ignored the Player already inside it."
+                " ignored activation because the Player " +
+                "was placed at this spawn point."
             );
 
             return;
@@ -111,38 +91,22 @@ public class SceneTransition : MonoBehaviour
         );
     }
 
-    private bool PlayerOrReturningZombieIsInside()
+    private bool PlayerIsAtThisSpawnPoint(
+        Transform playerRoot
+    )
     {
-        if (triggerCollider == null)
+        SceneSpawnPoint spawnPoint =
+            GetComponent<SceneSpawnPoint>();
+
+        if (spawnPoint == null)
             return false;
 
-        Collider2D[] overlappingObjects =
-            Physics2D.OverlapBoxAll(
-                triggerCollider.bounds.center,
-                triggerCollider.bounds.size,
-                0f
+        float distance =
+            Vector2.Distance(
+                playerRoot.position,
+                spawnPoint.transform.position
             );
 
-        foreach (
-            Collider2D collider
-            in overlappingObjects
-        )
-        {
-            if (collider.transform.root.CompareTag("Player"))
-                return true;
-
-            CuredZombieReturnHome zombie =
-                collider.GetComponentInParent<
-                    CuredZombieReturnHome
-                >();
-
-            if (zombie != null &&
-                zombie.IsReturningHome)
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return distance <= spawnIgnoreDistance;
     }
 }

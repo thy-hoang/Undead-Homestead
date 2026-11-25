@@ -40,6 +40,8 @@ public class PlayerDeath : MonoBehaviour
 
         SceneManager.sceneLoaded -= OnLabSceneLoaded;
 
+        RemoveDuplicatePlayers();
+
         GameObject bedPoint =
             GameObject.FindGameObjectWithTag("BedPoint");
 
@@ -77,5 +79,24 @@ public class PlayerDeath : MonoBehaviour
         Debug.Log("Player respawned at the lab bed.");
 
         isDying = false;
+    }
+
+    private void RemoveDuplicatePlayers()
+    {
+        GameObject[] players =
+            GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in players)
+        {
+            if (player != gameObject)
+            {
+                Debug.Log(
+                    "Destroying duplicate Player: " +
+                    player.name
+                );
+
+                Destroy(player);
+            }
+        }
     }
 }

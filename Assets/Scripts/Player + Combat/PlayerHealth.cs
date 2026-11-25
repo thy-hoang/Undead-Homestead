@@ -5,11 +5,26 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
 
+    [Header("Hit Effects")]
+    [SerializeField] private SimpleFlash flashEffect;
+
     public bool IsDead => currentHealth <= 0;
 
     private void Awake()
     {
         currentHealth = maxHealth;
+
+        if (flashEffect == null)
+        {
+            flashEffect =
+                GetComponent<SimpleFlash>();
+
+            if (flashEffect == null)
+            {
+                flashEffect =
+                    GetComponentInChildren<SimpleFlash>();
+            }
+        }
     }
 
     public void TakeDamage(int damage)
@@ -18,11 +33,19 @@ public class PlayerHealth : MonoBehaviour
             return;
 
         currentHealth -= damage;
-        currentHealth = Mathf.Max(currentHealth, 0);
+        currentHealth =
+            Mathf.Max(currentHealth, 0);
+
+        if (flashEffect != null)
+        {
+            flashEffect.Flash();
+        }
 
         Debug.Log(
             "Player took damage. Health: " +
-            currentHealth + "/" + maxHealth
+            currentHealth +
+            "/" +
+            maxHealth
         );
 
         if (currentHealth <= 0)
@@ -31,7 +54,9 @@ public class PlayerHealth : MonoBehaviour
                 GetComponent<PlayerDeath>();
 
             if (playerDeath != null)
+            {
                 playerDeath.Die();
+            }
         }
     }
 
@@ -39,15 +64,22 @@ public class PlayerHealth : MonoBehaviour
     {
         int oldHealth = currentHealth;
 
-        currentHealth += Mathf.RoundToInt(amount);
-        currentHealth = Mathf.Min(currentHealth, maxHealth);
+        currentHealth +=
+            Mathf.RoundToInt(amount);
 
-        int restoredAmount = currentHealth - oldHealth;
+        currentHealth =
+            Mathf.Min(currentHealth, maxHealth);
+
+        int restoredAmount =
+            currentHealth - oldHealth;
 
         Debug.Log(
             "Player health restored by " +
-            restoredAmount + ". Current health: " +
-            currentHealth + "/" + maxHealth
+            restoredAmount +
+            ". Current health: " +
+            currentHealth +
+            "/" +
+            maxHealth
         );
     }
 
@@ -57,7 +89,9 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log(
             "Player respawned with full health: " +
-            currentHealth + "/" + maxHealth
+            currentHealth +
+            "/" +
+            maxHealth
         );
     }
 }

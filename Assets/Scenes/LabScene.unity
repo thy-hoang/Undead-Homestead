@@ -1681,6 +1681,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: BaseScene
   destinationSpawnID: LabExitSpawn
+  ignorePlayerAtSpawn: 1
+  spawnIgnoreDistance: 0.3
 --- !u!114 &814576258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6308,6 +6310,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5394625530372057118, guid: aee5101bb0526e447a8dfeb834125522, type: 3}
       propertyPath: targetSpawnName
+      value: LabExitSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394625530372057118, guid: aee5101bb0526e447a8dfeb834125522, type: 3}
+      propertyPath: destinationSpawnID
       value: LabExitSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 7080584809302073196, guid: aee5101bb0526e447a8dfeb834125522, type: 3}
