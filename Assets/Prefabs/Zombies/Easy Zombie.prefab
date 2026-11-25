@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8360287543839230948}
   - component: {fileID: 6149507617325176411}
   - component: {fileID: 4068207245010350042}
+  - component: {fileID: 4984519450593480532}
   m_Layer: 6
   m_Name: Easy Zombie
   m_TagString: Untagged
@@ -195,6 +196,8 @@ MonoBehaviour:
   knockbackDuration: 0.34
   audioSource: {fileID: 6149507617325176411}
   onHitSound: {fileID: 8300000, guid: 63c0274b539f66142b1f0392c2a9a154, type: 3}
+  onDeathSound: {fileID: 8300000, guid: 4a80717bb49bafd48b9b2c51ddd6baf8, type: 3}
+  damageIndicatorPrefab: {fileID: 4337028460479086528, guid: 5036a096f86c4de4096ca30ee61443ba, type: 3}
 --- !u!114 &2057204262430450930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +213,6 @@ MonoBehaviour:
   target: {fileID: 6039630684246700166, guid: e9cf655839f70304ebfb5adf5b975cdc, type: 3}
   moveSpeed: 1.5
   stoppingDistance: 1
-  knockbackRecoveryTime: 0.34
 --- !u!114 &2204618290488267109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,3 +409,25 @@ MonoBehaviour:
   homeExitTag: HomeBaseExit
   baseSpawnID: BaseExitSpawn
   homeBasePointTag: HomeBasePoint
+--- !u!95 &4984519450593480532
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384897512951287556}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 70d07e075657e4f8c995f80053fb1b34, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

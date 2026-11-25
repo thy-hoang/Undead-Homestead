@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6214157303119138999}
   - component: {fileID: 2572109277672969325}
-  - component: {fileID: -1919971606186811778}
-  - component: {fileID: 3123155494825167828}
-  - component: {fileID: -3586279293776185019}
+  - component: {fileID: 6274416023951309259}
   m_Layer: 0
   m_Name: ShortTree
   m_TagString: Untagged
@@ -80,9 +78,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1451872081
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: -1661449793
+  m_SortingLayer: 2
+  m_SortingOrder: 15
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6783900630120892731, guid: a044745429a954c6c9dd1f40176b85ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,50 +93,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 1
   m_BlendShapeWeights: []
---- !u!114 &-1919971606186811778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033965183665418536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19506645b8d54a440b7ac030a4e1dd4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TreeResource
-  hitsRequired: 3
-  woodDropPrefab: {fileID: 5822797124958691672, guid: 7358b88708dcbe34c8de5736cceb678e, type: 3}
-  woodDropAmount: 1
-  dropRadius: 0.25
---- !u!50 &3123155494825167828
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033965183665418536}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &-3586279293776185019
+--- !u!61 &6274416023951309259
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,15 +127,15 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.10584742, y: -0.3506314}
+  m_Offset: {x: 0, y: 0.76}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.47, y: 0.2}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 4.83, y: 4.34}
     newSize: {x: 4.83, y: 4.34}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.8890179, y: 0.9227578}
+  m_Size: {x: 2.14, y: 1.5}
   m_EdgeRadius: 0
