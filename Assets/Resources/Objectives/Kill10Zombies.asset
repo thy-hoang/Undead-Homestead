@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee6348c0cda2214408b519f1327d57aa, type: 3}
-  m_Name: Kill2Zombies
+  m_Name: Kill10Zombies
   m_EditorClassIdentifier: Assembly-CSharp::Objective
-  objectiveID: kill_2_zombies
-  objectiveName: Kill 2 Zombies
+  objectiveID: kill_10_zombies
+  objectiveName: Kill 10 Zombies
   description: 
-  parent: {fileID: 0}
+  parent: {fileID: 11400000, guid: 0c20887e2069a524eb1bad78be83d623, type: 2}
   statistic: ZombiesKilled
-  targetAmount: 2
+  targetAmount: 10

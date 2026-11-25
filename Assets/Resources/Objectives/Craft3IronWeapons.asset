@@ -15,6 +15,6 @@ MonoBehaviour:
   objectiveID: craft_3_iron_weapons
   objectiveName: Craft 3 Iron Weapons
   description: 
-  parent: {fileID: 0}
+  parent: {fileID: 11400000, guid: 54e84707fed5b7b419ad3049898327a6, type: 2}
   statistic: IronWeaponCrafted
   targetAmount: 3
