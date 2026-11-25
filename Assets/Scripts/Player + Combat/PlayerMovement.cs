@@ -65,9 +65,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(
-            rb.position +
-            movementInput * moveSpeed * Time.fixedDeltaTime
-        );
+        rb.linearVelocity = movementInput * moveSpeed;
     }
 }

@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Undead Homestead.slnx"
+    "dotnet.defaultSolution": "Undead-Homestead.slnx"
 }

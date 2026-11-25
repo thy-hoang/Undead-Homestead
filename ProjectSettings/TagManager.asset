@@ -6,8 +6,6 @@ TagManager:
   tags:
   - HomeBasePoint
   - BedPoint
-  - EntranceToBase
-  - BaseExitSpawn
   layers:
   - Default
   - TransparentFX
@@ -42,14 +40,8 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Ground
-    uniqueID: 1332174769
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: World
-    uniqueID: 2843095215
     locked: 0
   m_RenderingLayers:
   - Default
