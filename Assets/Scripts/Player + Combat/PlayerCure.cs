@@ -45,8 +45,7 @@ public class PlayerCure : MonoBehaviour
 
         foreach (Collider2D objectInRange in objectsInRange)
         {
-            ZombieCureable zombie =
-                objectInRange.GetComponent<ZombieCureable>();
+            ZombieCureable zombie = objectInRange.GetComponentInParent<ZombieCureable>();
 
             if (zombie == null)
                 continue;

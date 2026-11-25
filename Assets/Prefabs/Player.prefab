@@ -51,6 +51,8 @@ GameObject:
   - component: {fileID: 4747878255050401793}
   - component: {fileID: 6025052264207786324}
   - component: {fileID: 1758343820010033500}
+  - component: {fileID: 3294016444082287098}
+  - component: {fileID: 3866996692974722846}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -119,9 +121,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -1451872081
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -132,7 +134,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
   m_BlendShapeWeights: []
 --- !u!50 &361330866492269156
 Rigidbody2D:
@@ -219,9 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235c0996998495342bf0ff460ea08dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  upSprite: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
-  downSprite: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
-  sideSprite: {fileID: 4334783836991956000, guid: dacbd84b9103845e0a451a190bea9a27, type: 3}
   attackPoint: {fileID: 677961138609712815}
   attackDistance: 0.7
   moveSpeed: 4
@@ -353,3 +352,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FarmPlotInteraction
   resourceManager: {fileID: 0}
   detectionRadius: 0.15
+--- !u!114 &3294016444082287098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867200813987780921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ac54d474ce0f64a9d9242b11df162e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawner
+--- !u!95 &3866996692974722846
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867200813987780921}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0bf940dfa3fab4f2a8ddf2f82c8070cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
