@@ -16,7 +16,6 @@ public class SceneTransitionManager : MonoBehaviour
     [SerializeField] private AudioClip transitionSound;
 
     private bool isTransitioning;
-    private bool sceneFinishedLoading;
     private string pendingSpawnID;
 
     private void Awake()
@@ -48,141 +47,205 @@ public class SceneTransitionManager : MonoBehaviour
         if (isTransitioning)
             return;
 
-        pendingSpawnID = spawnID;
+        if (string.IsNullOrWhiteSpace(sceneName))
+        {
+            Debug.LogError(
+                "Scene name is empty."
+            );
+            return;
+        }
+
+        pendingSpawnID =
+            spawnID == null
+                ? ""
+                : spawnID.Trim();
+
         isTransitioning = true;
 
-        StartCoroutine(Transition(sceneName));
+        Debug.Log(
+            "Loading scene '" +
+            sceneName +
+            "' with spawn ID '" +
+            pendingSpawnID +
+            "'."
+        );
+
+        StartCoroutine(
+            Transition(sceneName)
+        );
     }
 
-    private IEnumerator Transition(string sceneName)
+    private IEnumerator Transition(
+        string sceneName
+    )
     {
         if (fadeGroup != null)
         {
-            yield return StartCoroutine(Fade(1f));
+            yield return StartCoroutine(
+                Fade(1f)
+            );
         }
 
         if (audioSource != null &&
             transitionSound != null)
         {
-            audioSource.PlayOneShot(transitionSound);
+            audioSource.PlayOneShot(
+                transitionSound
+            );
         }
 
-        sceneFinishedLoading = false;
+        AsyncOperation loadOperation =
+            SceneManager.LoadSceneAsync(
+                sceneName
+            );
 
-        SceneManager.sceneLoaded += HandleSceneLoaded;
+        if (loadOperation == null)
+        {
+            Debug.LogError(
+                "Could not load scene: " +
+                sceneName
+            );
 
-        SceneManager.LoadScene(sceneName);
+            isTransitioning = false;
+            yield break;
+        }
 
-        yield return new WaitUntil(
-            () => sceneFinishedLoading
+        yield return loadOperation;
+
+        // Allow the new scene's objects to initialize.
+        yield return null;
+
+        yield return StartCoroutine(
+            PlacePlayerAfterSceneLoad()
         );
 
         if (fadeGroup != null)
         {
-            yield return StartCoroutine(Fade(0f));
+            yield return StartCoroutine(
+                Fade(0f)
+            );
         }
 
+        pendingSpawnID = "";
         isTransitioning = false;
     }
 
-    private void HandleSceneLoaded(
-        Scene scene,
-        LoadSceneMode mode
-    )
+    private IEnumerator PlacePlayerAfterSceneLoad()
     {
-        SceneManager.sceneLoaded -= HandleSceneLoaded;
-
-        PlacePlayerAtSpawnPoint();
-
-        sceneFinishedLoading = true;
-    }
-
-    private void PlacePlayerAtSpawnPoint()
-    {
-        if (string.IsNullOrEmpty(pendingSpawnID))
+        if (string.IsNullOrWhiteSpace(pendingSpawnID))
         {
             Debug.LogWarning(
                 "No destination spawn ID was provided."
             );
 
-            return;
+            yield break;
         }
 
-        SceneSpawnPoint[] spawnPoints =
-            FindObjectsByType<SceneSpawnPoint>(
-                FindObjectsSortMode.None
-            );
-
-        SceneSpawnPoint matchingSpawn = null;
-
-        foreach (SceneSpawnPoint spawnPoint in spawnPoints)
+        for (int attempt = 0; attempt < 30; attempt++)
         {
-            if (spawnPoint.SpawnID == pendingSpawnID)
+            SceneSpawnPoint[] spawnPoints =
+                FindObjectsByType<SceneSpawnPoint>(
+                    FindObjectsSortMode.None
+                );
+
+            SceneSpawnPoint matchingSpawn =
+                null;
+
+            foreach (SceneSpawnPoint point in spawnPoints)
             {
-                matchingSpawn = spawnPoint;
-                break;
+                if (point == null)
+                    continue;
+
+                string pointID =
+                    point.SpawnID == null
+                        ? ""
+                        : point.SpawnID.Trim();
+
+                if (pointID == pendingSpawnID)
+                {
+                    matchingSpawn = point;
+                    break;
+                }
             }
+
+            GameObject[] players =
+                GameObject.FindGameObjectsWithTag(
+                    "Player"
+                );
+
+            if (players.Length > 1)
+            {
+                Debug.LogError(
+                    "Multiple Player objects were found. " +
+                    "Only one active Player should exist."
+                );
+
+                yield break;
+            }
+
+            if (matchingSpawn != null &&
+                players.Length == 1)
+            {
+                GameObject player =
+                    players[0];
+
+                Vector3 spawnPosition =
+                    matchingSpawn.transform.position;
+
+                Rigidbody2D playerRb =
+                    player.GetComponent<Rigidbody2D>();
+
+                if (playerRb != null)
+                {
+                    playerRb.position =
+                        spawnPosition;
+
+                    playerRb.linearVelocity =
+                        Vector2.zero;
+
+                    playerRb.angularVelocity =
+                        0f;
+                }
+
+                player.transform.position =
+                    spawnPosition;
+
+                Debug.Log(
+                    "Player placed at spawn point '" +
+                    pendingSpawnID +
+                    "' at position " +
+                    spawnPosition
+                );
+
+                yield break;
+            }
+
+            yield return null;
         }
 
-        if (matchingSpawn == null)
-        {
-            Debug.LogError(
-                "No spawn point with ID '" +
-                pendingSpawnID +
-                "' was found in the loaded scene."
-            );
-
-            return;
-        }
-
-        GameObject player =
-            GameObject.FindGameObjectWithTag("Player");
-
-        if (player == null)
-        {
-            Debug.LogError(
-                "Player was not found in the loaded scene."
-            );
-
-            return;
-        }
-
-        Vector3 spawnPosition =
-            matchingSpawn.transform.position;
-
-        player.transform.position = spawnPosition;
-
-        Rigidbody2D playerRb =
-            player.GetComponent<Rigidbody2D>();
-
-        if (playerRb != null)
-        {
-            playerRb.position = spawnPosition;
-            playerRb.linearVelocity = Vector2.zero;
-            playerRb.angularVelocity = 0f;
-        }
-
-        Debug.Log(
-            "Player placed at spawn point '" +
+        Debug.LogError(
+            "Player could not be placed at spawn point '" +
             pendingSpawnID +
-            "' at position " +
-            spawnPosition
+            "'."
         );
-
-        pendingSpawnID = "";
     }
 
-    private IEnumerator Fade(float targetAlpha)
+    private IEnumerator Fade(
+        float targetAlpha
+    )
     {
         if (fadeGroup == null)
             yield break;
 
-        float startAlpha = fadeGroup.alpha;
+        float startAlpha =
+            fadeGroup.alpha;
+
         float elapsed = 0f;
 
         while (elapsed < fadeDuration)
         {
-            elapsed += Time.unscaledDeltaTime;
+            elapsed +=
+                Time.unscaledDeltaTime;
 
             float progress =
                 Mathf.Clamp01(
@@ -194,15 +257,17 @@ public class SceneTransitionManager : MonoBehaviour
                     progress * fadeSteps
                 ) / fadeSteps;
 
-            fadeGroup.alpha = Mathf.Lerp(
-                startAlpha,
-                targetAlpha,
-                steppedProgress
-            );
+            fadeGroup.alpha =
+                Mathf.Lerp(
+                    startAlpha,
+                    targetAlpha,
+                    steppedProgress
+                );
 
             yield return null;
         }
 
-        fadeGroup.alpha = targetAlpha;
+        fadeGroup.alpha =
+            targetAlpha;
     }
 }
