@@ -135,6 +135,16 @@ public class BlueprintButton : MonoBehaviour
                 hotbarManager.addItemInNextAvailableSlot(craftableItem);
             }
 
+            if (craftableItem.itemName.ToLower().Contains("iron"))
+            {
+                StatisticsManager.Instance.Increment("IronWeaponCrafted", 1);
+            }
+
+            if (craftableItem.itemName.ToLower().Contains("stone"))
+            {
+                StatisticsManager.Instance.Increment("StoneWeaponCrafted", 1);
+            }
+
         }
         else
         {
