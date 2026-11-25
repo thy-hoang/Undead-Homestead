@@ -24,10 +24,18 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1909876918032228475, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.63
+      objectReference: {fileID: 0}
     - target: {fileID: 5385694810334930659, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
       propertyPath: m_Name
       value: TJ Zombie Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7562724983382285771, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7722439474934420473, guid: dff71e142a5e74558b639ae75ca3910e, type: 3}
     - target: {fileID: 9059581613585617086, guid: 118c729d337ad8e4fb5d79317a8b1182, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.27487
