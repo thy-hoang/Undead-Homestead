@@ -293,6 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: CaveScene
   destinationSpawnID: CaveEntranceSpawn
+  ignorePlayerAlreadyInside: 1
 --- !u!114 &407742300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: BaseScene
   destinationSpawnID: BaseExitSpawn
+  ignorePlayerAlreadyInside: 1
 --- !u!114 &558228745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1570,6 +1572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: BaseScene
   destinationSpawnID: 
+  ignorePlayerAlreadyInside: 1
 --- !u!61 &1527453001
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8893,6 +8896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   sceneToLoad: CaveScene
   destinationSpawnID: 
+  ignorePlayerAlreadyInside: 1
 --- !u!61 &1703870564
 BoxCollider2D:
   m_ObjectHideFlags: 0
